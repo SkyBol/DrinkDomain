@@ -1,31 +1,43 @@
 import { Route } from 'react-router-dom';
 import authorities from '../../../../config/Authorities';
-import roles from '../../../../config/Roles';
+import { roles as Roles } from '../../../../config/Roles';
 import ActiveUserContext from '../../../user/contexts/ActiveUserContext';
 import { useContext } from 'react';
+import { Optional } from '../../../../types/Optional';
 
-type AuthoritiesProp = keyof typeof authorities | (keyof typeof authorities)[];
-type RoleProp = keyof typeof roles | (keyof typeof roles)[];
+type keyofAuthority = keyof typeof authorities;
+type keyofRole = keyof typeof Roles;
+
+type AuthoritiesProp = keyofAuthority | keyofAuthority[];
+type RoleProp = keyofRole | keyofRole[];
+
+type toCheckType = (keyofAuthority | keyofRole)[];
 
 export interface PrivateRouteProps {
     path: string;
-    roles: RoleProp;
-    authorities: AuthoritiesProp;
+    roles: Optional<RoleProp>;
+    authorities: Optional<AuthoritiesProp>;
     element: JSX.Element | JSX.Element[];
     children: React.ReactNode | React.ReactNode[];
 }
 
-const PrivateRoute = ({path, element, children} : PrivateRouteProps) => {
+const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps) => {
     const { user } = useContext(ActiveUserContext);
 
-    const isUserAllowed = (toCheck: RoleProp | AuthoritiesProp) => {
-        if (Array.isArray(toCheck)) {
+    const isUserAllowed = (toCheck: toCheckType) => {
+        
+    }
+
+    if (authorities || roles) {
+        let toCheck: toCheckType = [];
+        
+        if (authorities) {
+            toCheck = [...toCheck]
+        }
+        if (roles) {
             
         }
     }
-
-    if (roles) {}
-    if (authorities) {}
 
     return (
         <Route
