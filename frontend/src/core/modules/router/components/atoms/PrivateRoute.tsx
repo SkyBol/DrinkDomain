@@ -8,35 +8,68 @@ import { Optional } from '../../../../types/Optional';
 type keyofAuthority = keyof typeof authorities;
 type keyofRole = keyof typeof Roles;
 
-type AuthoritiesProp = keyofAuthority | keyofAuthority[];
-type RoleProp = keyofRole | keyofRole[];
+type AuthoritiesProp = Optional<keyofAuthority | keyofAuthority[]>;
+type RolesProp = Optional<keyofRole | keyofRole[]>;
 
 type toCheckType = (keyofAuthority | keyofRole)[];
 
 export interface PrivateRouteProps {
     path: string;
-    roles: Optional<RoleProp>;
-    authorities: Optional<AuthoritiesProp>;
-    element: JSX.Element | JSX.Element[];
-    children: React.ReactNode | React.ReactNode[];
+    //
+    roles?: RolesProp;
+    authorities?: AuthoritiesProp;
+    //
+    element?: JSX.Element | JSX.Element[];
+    children?: React.ReactNode | React.ReactNode[];
 }
 
-const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps) => {
+const getAccessRequirements = (authorities: AuthoritiesProp, roles: RolesProp): toCheckType => {
+    let toCheck: toCheckType = [];
+
+    if (authorities) {
+        if (Array.isArray(authorities)) {
+            toCheck = [...toCheck, ...authorities]
+        } else {
+            toCheck = [...toCheck, authorities]
+        }
+    }
+    if (roles) {
+        if (Array.isArray(roles)) {
+            toCheck = [...toCheck, ...roles]
+        } else {
+            toCheck = [...toCheck, roles]
+        }
+    }
+    return toCheck;
+}
+
+export const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps) => {
     const { user } = useContext(ActiveUserContext);
 
-    const isUserAllowed = (toCheck: toCheckType) => {
-        
+    const getUserAccess = (): toCheckType => {
+        if (user) {
+            const userAccess: toCheckType = [...user.roles.map((role) => role.name)];
+            return [...userAccess, ...user.roles.map((auth) => auth.authorities).flat().map((auth) => auth.name)];
+        }
+        return [];
     }
 
-    if (authorities || roles) {
-        let toCheck: toCheckType = [];
+    const isUserAllowed = (): boolean => {
+        const toCheck = getAccessRequirements(authorities, roles);
+
+        if (!user) {
+            return false;
+        }
+        const userAccess = getUserAccess();
         
-        if (authorities) {
-            toCheck = [...toCheck]
-        }
-        if (roles) {
-            
-        }
+        // User needs any role / authority from the Array toCheck
+        return userAccess.some((access) => {
+            return toCheck.some((check) => access === check)
+        }) || false;
+    }
+
+    if (!isUserAllowed()) {
+        return <h2>Unauthorized</h2>
     }
 
     return (
@@ -51,3 +84,5 @@ const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRou
         />
     );
 }
+
+export default PrivateRoute;

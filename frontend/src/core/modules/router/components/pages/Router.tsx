@@ -6,6 +6,7 @@ import Homepage from '../../../homepage/components/pages/Homepage/Homepage';
 import Reminder from '../../../../../domain/modules/reminder/components/pages/Reminder/Reminder';
 import AbstractFormGenerated from '../../../abstract/components/form/components/molecules/AbstractFormGenerated';
 import { emptyReminder } from '../../../../../domain/modules/reminder/models/Reminder.model';
+import PrivateRoute from '../atoms/PrivateRoute';
 
 
 const Router = () => {
@@ -21,7 +22,7 @@ const Router = () => {
 
       <Route path={'/users/:userId'} element={<UserPage />} />
       <Route path={'/users/add'} element={<UserPage />} />
-      <Route path={'/users/'} element={<UserTable />} />
+      <PrivateRoute path={'/users/'} element={<UserTable />} roles={'ADMIN'}/>
 
       <Route path={'/reminder'}>
         <Route path='' element={<Reminder />} />
