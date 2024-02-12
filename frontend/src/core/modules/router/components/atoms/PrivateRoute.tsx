@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, RouteProps } from 'react-router-dom';
 import authorities from '../../../../config/Authorities';
 import { roles as Roles } from '../../../../config/Roles';
 import ActiveUserContext from '../../../user/contexts/ActiveUserContext';
@@ -23,7 +23,7 @@ export interface PrivateRouteProps {
     children?: React.ReactNode | React.ReactNode[];
 }
 
-export const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps) => {
+export const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps & RouteProps) => {
     const { user } = useContext(ActiveUserContext);
 
     const getAccessRequirements = useCallback((): toCheckType => {
@@ -68,7 +68,12 @@ export const PrivateRoute = ({path, element, children, authorities, roles} : Pri
     }, [user]);
 
     if (!isUserAllowed) {
-        return <h2>Unauthorized</h2>
+        return (
+            <Route
+                path={path}
+                element={<h2>unauthorized</h2>}
+            />
+        );
     }
 
     return (

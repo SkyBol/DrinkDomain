@@ -10,9 +10,7 @@ import PrivateRoute from '../atoms/PrivateRoute';
 
 
 const Router = () => {
-  //const { checkRole } = useContext(ActiveUserContext);
-
-  /** navigate to different "home"-locations depending on Role the user have */
+  const PrivateRouteIIFE = ((props: any) => PrivateRoute(props));
 
   return (
     <Routes>
@@ -22,7 +20,7 @@ const Router = () => {
 
       <Route path={'/users/:userId'} element={<UserPage />} />
       <Route path={'/users/add'} element={<UserPage />} />
-      <PrivateRoute path={'/users/'} element={<UserTable />} roles={'ADMIN'}/>
+      <PrivateRouteIIFE path={'/users/'} element={<UserTable />} roles={'ADMIN'}/>
 
       <Route path={'/reminder'}>
         <Route path='' element={<Reminder />} />
