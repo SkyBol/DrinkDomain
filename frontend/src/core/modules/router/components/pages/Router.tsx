@@ -3,10 +3,10 @@ import Login from '../../../user/components/pages/LoginPage/LoginPage';
 import UserPage from '../../../user/components/pages/UserPage/UserPage';
 import UserTable from '../../../user/components/pages/UserTable/UserTable';
 import Homepage from '../../../homepage/components/pages/Homepage/Homepage';
-import Bottles from "../../../../../domain/modules/bootle/components/pages/Bottle/Bottles.tsx";
 import BottlePage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottlePage.tsx";
 import AbstractFormGenerated from '../../../abstract/components/form/components/molecules/AbstractFormGenerated';
-import {defaultBottle, emptyReminder} from '../../../../../domain/modules/bootle/models/Bottle.model.ts';
+import {defaultBottle} from '../../../../../domain/modules/bootle/models/Bottle.model.ts';
+import BottleTable from "../../../../../domain/modules/bootle/components/pages/BottleTable/BottleTable.tsx";
 
 
 
@@ -29,7 +29,7 @@ const Router = () => {
       <Route path={'/bottles/:bottleId'} element={<BottlePage/>}/>
       <Route path={'/bottles/add'} element={<BottlePage/>}/>
       <Route path={'/bottles'}>
-        <Route path='' element={<Bottles />} />
+        <Route path='' element={<BottleTable />} />
         <Route path='test' element={<AbstractFormGenerated object={defaultBottle} submitActionHandler={() => {}}/>} />
       </Route>
 

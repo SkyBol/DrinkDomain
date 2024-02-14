@@ -16,10 +16,6 @@ const BottleTable = () => {
             setBottles(res.data);
         });
     }, []);
-
-    const handleAdd = () => {
-        navigate('/bottles/add');
-    };
     const handleEdit = (id: string) => {
         console.log("Does the Edit work"+id)
         navigate('/bottles/' + id);
@@ -30,12 +26,13 @@ const BottleTable = () => {
     };
 
     return (
+        <div style={{padding:15}}>
         <BottleList
             bottles={bottles}
             handleDelete={handleDelete}
             handleEdit={handleEdit}
-            handleAdd={handleAdd}
             />
+        </div>
     )
 }
 

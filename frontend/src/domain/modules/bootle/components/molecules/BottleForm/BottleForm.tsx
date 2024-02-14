@@ -19,6 +19,7 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
         <AbstractForm formik={formik}>
             <AbstractFormTextField id="img"/>
             <AbstractFormTextField id="name"/>
+            <AbstractFormTextField id="type"/>
             <AbstractFormTextField id="description"/>
             <AbstractFormTextField id="country"/>
             <AbstractFormTextField id="amount"/>

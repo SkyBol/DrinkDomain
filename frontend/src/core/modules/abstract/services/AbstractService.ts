@@ -5,7 +5,7 @@ class AbstractService<T> {
     public base : string;
 
     constructor (base: string) {
-        this.base = base + base.endsWith("/") ? "" : "/";
+        this.base = base + (base.endsWith("/") ? "" : "/");
     }
 
     public getAll () {

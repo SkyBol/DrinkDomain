@@ -5,14 +5,14 @@ import AbstractCardTitle
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
 import AbstractCardBody
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardBody.tsx";
-import AbstractCardCountry
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardCountry.tsx";
 import AbstractCardAmount
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
 import AbstractCardRating
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
 import AbstractCard
     from "../../../../../../core/modules/abstract/components/card/components/molecules/AbstractCard.tsx";
+import AbstractCardType
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
 
 
 interface BottleCardProps {
@@ -34,8 +34,8 @@ const BottleCard = ({ bottle, handleEdit, handleDelete } : BottleCardProps) => {
             />
             <CardContent>
                 <AbstractCardTitle>{bottle.name}</AbstractCardTitle>
+                <AbstractCardType country={bottle.country}>{bottle.type}</AbstractCardType>
                 <AbstractCardBody>{bottle.description}</AbstractCardBody>
-                <AbstractCardCountry country={bottle.country}/>
                 <AbstractCardAmount amount={bottle.amount}/>
                 <AbstractCardRating  rating={bottle.rating}/>
             </CardContent>
