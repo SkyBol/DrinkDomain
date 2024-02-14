@@ -3,10 +3,10 @@ import Login from '../../../user/components/pages/LoginPage/LoginPage';
 import UserPage from '../../../user/components/pages/UserPage/UserPage';
 import UserTable from '../../../user/components/pages/UserTable/UserTable';
 import Homepage from '../../../homepage/components/pages/Homepage/Homepage';
-import Bottles from "../../../../../domain/modules/reminder/components/pages/Bottle/Bottles.tsx";
-import BottlePage from "../../../../../domain/modules/reminder/components/pages/BottlePage/BottlePage.tsx";
+import Bottles from "../../../../../domain/modules/bootle/components/pages/Bottle/Bottles.tsx";
+import BottlePage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottlePage.tsx";
 import AbstractFormGenerated from '../../../abstract/components/form/components/molecules/AbstractFormGenerated';
-import {defaultBottle, emptyReminder} from '../../../../../domain/modules/reminder/models/Bottle.model.ts';
+import {defaultBottle, emptyReminder} from '../../../../../domain/modules/bootle/models/Bottle.model.ts';
 
 
 
