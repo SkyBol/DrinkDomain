@@ -1,80 +1,31 @@
-import { Route, RouteProps } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import authorities from '../../../../config/Authorities';
-import { roles as Roles } from '../../../../config/Roles';
+import roles from '../../../../config/Roles';
 import ActiveUserContext from '../../../user/contexts/ActiveUserContext';
-import { useCallback, useContext, useMemo } from 'react';
-import { Optional } from '../../../../types/Optional';
+import { useContext } from 'react';
 
-type keyofAuthority = keyof typeof authorities;
-type keyofRole = keyof typeof Roles;
-
-type AuthoritiesProp = Optional<keyofAuthority | keyofAuthority[]>;
-type RolesProp = Optional<keyofRole | keyofRole[]>;
-
-type toCheckType = (keyofAuthority | keyofRole)[];
+type AuthoritiesProp = keyof typeof authorities | (keyof typeof authorities)[];
+type RoleProp = keyof typeof roles | (keyof typeof roles)[];
 
 export interface PrivateRouteProps {
     path: string;
-    //
-    roles?: RolesProp;
-    authorities?: AuthoritiesProp;
-    //
-    element?: JSX.Element | JSX.Element[];
-    children?: React.ReactNode | React.ReactNode[];
+    roles: RoleProp;
+    authorities: AuthoritiesProp;
+    element: JSX.Element | JSX.Element[];
+    children: React.ReactNode | React.ReactNode[];
 }
 
-export const PrivateRoute = ({path, element, children, authorities, roles} : PrivateRouteProps & RouteProps) => {
+const PrivateRoute = ({path, element, children} : PrivateRouteProps) => {
     const { user } = useContext(ActiveUserContext);
 
-    const getAccessRequirements = useCallback((): toCheckType => {
-        let toCheck: toCheckType = [];
-    
-        if (authorities) {
-            if (Array.isArray(authorities)) {
-                toCheck = [...toCheck, ...authorities]
-            } else {
-                toCheck = [...toCheck, authorities]
-            }
+    const isUserAllowed = (toCheck: RoleProp | AuthoritiesProp) => {
+        if (Array.isArray(toCheck)) {
+            
         }
-        if (roles) {
-            if (Array.isArray(roles)) {
-                toCheck = [...toCheck, ...roles]
-            } else {
-                toCheck = [...toCheck, roles]
-            }
-        }
-        return toCheck;
-    }, []);
-
-    const userAccess: toCheckType = useMemo((): toCheckType => {
-        if (user) {
-            const userAccess: toCheckType = [...user.roles.map((role) => role.name)];
-            return [...userAccess, ...user.roles.map((auth) => auth.authorities).flat().map((auth) => auth.name)];
-        }
-        return [];
-    }, [user]);
-
-    const isUserAllowed: boolean = useMemo((): boolean => {
-        const toCheck = getAccessRequirements();
-
-        if (!user) {
-            return false;
-        }
-
-        // User needs any role / authority from the Array toCheck
-        return userAccess.some((access) => {
-            return toCheck.some((check) => access === check)
-        }) || false;
-    }, [user]);
-
-    if (!isUserAllowed) {
-        return (
-            <Route
-                path={path}
-                element={<h2>unauthorized</h2>}
-            />
-        );
     }
+
+    if (roles) {}
+    if (authorities) {}
 
     return (
         <Route
@@ -88,5 +39,3 @@ export const PrivateRoute = ({path, element, children, authorities, roles} : Pri
         />
     );
 }
-
-export default PrivateRoute;

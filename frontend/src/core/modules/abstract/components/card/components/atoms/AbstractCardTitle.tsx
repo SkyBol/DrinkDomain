@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
 
 interface AbstractCardTitleProps {
-    title ?: string;
+    name ?: string;
     children ?: any;
 }
 
-const AbstractCardTitle = ({ title, children } : AbstractCardTitleProps) => {
+const AbstractCardTitle = ({ name, children } : AbstractCardTitleProps) => {
     return (
         <Typography variant="h5" component="div">
-            {title ?? ""}{children ?? ""}
+            {name ?? ""}{children ?? ""}
         </Typography>
     )
 }

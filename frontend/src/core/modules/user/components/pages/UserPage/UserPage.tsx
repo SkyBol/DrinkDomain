@@ -1,8 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import { User, defaultUser } from '../../../models/User.model'
 import UserService from '../../../services/UserService';
 import UserForm from '../../molecules/UserForm/UserForm';
-import { useEffect, useState } from 'react';
+
 
 const UserPage = () => {
   const navigate = useNavigate();

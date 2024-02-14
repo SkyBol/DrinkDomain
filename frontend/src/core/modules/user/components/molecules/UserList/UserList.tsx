@@ -8,7 +8,6 @@ type UserListParams = {
     handleDelete : (val : string) => void;
     handleAdd : () => void;
 }
-
 const UserList = ({users, handleEdit, handleDelete, handleAdd} : UserListParams) => {
     return (
         <>

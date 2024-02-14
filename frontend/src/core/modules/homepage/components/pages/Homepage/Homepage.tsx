@@ -7,6 +7,7 @@ const Homepage = () => {
             <Link to={"/login"}>Login</Link><br/>
             <Link to={"/users/"}>User List</Link><br/>
             <Link to={"/users/add"}>User Add</Link><br/>
+            <Link to={"/bottles"}>Bottles</Link><br/>
         </div>
     )
 }

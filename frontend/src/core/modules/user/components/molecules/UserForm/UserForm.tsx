@@ -8,7 +8,6 @@ type UserFormParams = {
     user: User;
     submitActionHandler: (values: User) => void;
 }
-
 const UserForm = ({user, submitActionHandler} : UserFormParams) => {
     const formik = useFormik({
         initialValues: user,
@@ -18,7 +17,6 @@ const UserForm = ({user, submitActionHandler} : UserFormParams) => {
 
     return (
         <AbstractForm formik={formik}>
-            <AbstractFormTextField id="id" disabled />
             <AbstractFormTextField id="email" />
             <AbstractFormTextField id="firstName" />
             <AbstractFormTextField id="lastName" />
