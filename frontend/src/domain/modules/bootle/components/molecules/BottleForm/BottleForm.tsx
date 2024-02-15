@@ -3,6 +3,11 @@ import AbstractForm from "../../../../../../core/modules/abstract/components/for
 import Bottle from "../../../models/Bottle.model.ts";
 import AbstractFormButton from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormButton";
 import AbstractFormTextField from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormTextField";
+import AbstractFormDropDown
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardCountry.tsx";
+import {countryList} from "../../../models/Countries.model.ts";
+
+
 
 interface BottleFormProps {
     bottle: Bottle;
@@ -21,7 +26,10 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
             <AbstractFormTextField id="name"/>
             <AbstractFormTextField id="type"/>
             <AbstractFormTextField id="description"/>
-            <AbstractFormTextField id="country"/>
+            <AbstractFormDropDown
+                id="country"
+                options={countryList}
+            />
             <AbstractFormTextField id="amount"/>
             <AbstractFormTextField id="rating"/>
             <AbstractFormButton>Save</AbstractFormButton>

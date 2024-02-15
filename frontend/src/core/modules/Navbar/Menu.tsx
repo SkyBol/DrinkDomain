@@ -52,6 +52,7 @@ const MyMenu = ({handleClick, handleClose}:MenuProps) => {
                     'aria-labelledby': 'basic-button',
                 }}
             >
+                <MenuItem onClick={()=> handleMenuClose("/")}>Home</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/bottles")}>Inventar</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/bottles/add")}>Flasche hinzufügen</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/guestBook")}>Gästebuch</MenuItem>
