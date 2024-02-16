@@ -16,6 +16,6 @@ import lombok.Setter;
 public class Listener extends AbstractEntity {
     @Column(name = "api-key")
     private String apiKey;
-    @Column
+    @Column(length = 1024)
     private String value;
 }
