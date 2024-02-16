@@ -7,6 +7,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import MyMenu from "./Menu.tsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -51,6 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate()
 
     const handleMenuClick = () => {
         setMenuOpen(!menuOpen);
@@ -70,6 +72,7 @@ export default function SearchAppBar() {
                         noWrap
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                        onClick={()=>navigate("/")}
                     >
                         DRINKDOMAIN
                     </Typography>

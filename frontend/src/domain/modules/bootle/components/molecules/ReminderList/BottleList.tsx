@@ -13,7 +13,7 @@ const BottleList = ({ bottles } : BottleListProps) => {
             <Grid container spacing={4} direction={"row"}>
 
             {bottles.map((bottle) => (
-                <Grid item xs={3} key={bottle.id}>
+                <Grid item xs={1.5} key={bottle.id}>
                        <BottleCard
                            bottle={bottle}
                        />

@@ -6,6 +6,12 @@ import AbstractFormTextField from "../../../../../../core/modules/abstract/compo
 import AbstractFormDropDown
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardCountry.tsx";
 import {countryList} from "../../../models/Countries.model.ts";
+import AbstractCardImgDrop
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardImgDrop.tsx";
+import AbstractFormTextArea
+    from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormBigTextArea.tsx";
+import AbstractFormType
+    from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormType.tsx";
 
 
 
@@ -22,14 +28,14 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
 
     return (
         <AbstractForm formik={formik}>
-            <AbstractFormTextField id="img"/>
+            <AbstractCardImgDrop id="img" formik={formik}/>
             <AbstractFormTextField id="name"/>
-            <AbstractFormTextField id="type"/>
-            <AbstractFormTextField id="description"/>
+            <AbstractFormType id="type" formik={formik}/>
+            <AbstractFormTextArea id="description"/>
             <AbstractFormDropDown
                 id="country"
                 options={countryList}
-            />
+                formik={formik}/>
             <AbstractFormTextField id="amount"/>
             <AbstractFormTextField id="rating"/>
             <AbstractFormButton>Save</AbstractFormButton>

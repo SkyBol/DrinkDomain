@@ -20,6 +20,7 @@ const AbstractCardRating = ({ rating } : AbstractCardRatingProps) => {
             <StyledRating
                 name="read-only"
                 value={rating}
+                readOnly
                 precision={0.5}
                 icon={<LocalBarIcon fontSize="inherit" />}
                 emptyIcon={<LocalBarIcon fontSize="inherit" />}

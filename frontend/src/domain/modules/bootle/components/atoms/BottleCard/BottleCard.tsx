@@ -28,7 +28,7 @@ const BottleCard = ({ bottle, handleEdit, handleDelete } : BottleCardProps) => {
         navigate(`/bottles/detail/${bottle.id}`)
     }
     return (
-        <Card key={bottle.id} style={{width:220}}  onClick={handleClick}>
+        <Card key={bottle.id} style={{width:220, height:360}}  onClick={handleClick}>
             <CardActionArea>
             <CardMedia
                 component="img"

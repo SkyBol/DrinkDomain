@@ -53,7 +53,7 @@ const MyMenu = ({handleClick, handleClose}:MenuProps) => {
                 }}
             >
                 <MenuItem onClick={()=> handleMenuClose("/")}>Home</MenuItem>
-                <MenuItem onClick={()=> handleMenuClose("/bottles")}>Inventar</MenuItem>
+                <MenuItem onClick={()=> handleMenuClose("/bottles")}>Bar</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/bottles/add")}>Flasche hinzufügen</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/guestBook")}>Gästebuch</MenuItem>
                 <MenuItem onClick={()=> handleMenuClose("/login")}>Logout</MenuItem>
