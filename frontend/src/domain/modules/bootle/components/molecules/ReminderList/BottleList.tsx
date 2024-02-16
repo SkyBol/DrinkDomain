@@ -4,11 +4,10 @@ import {Grid} from "@mui/material";
 
 type BottleListProps = {
     bottles : Bottle[];
-    handleDelete : (val : string) => void;
-    handleEdit : (val: string) => void;
+
 }
 
-const BottleList = ({ bottles, handleDelete, handleEdit } : BottleListProps) => {
+const BottleList = ({ bottles } : BottleListProps) => {
     return (
         <>
             <Grid container spacing={4} direction={"row"}>
@@ -17,8 +16,6 @@ const BottleList = ({ bottles, handleDelete, handleEdit } : BottleListProps) => 
                 <Grid item xs={3} key={bottle.id}>
                        <BottleCard
                            bottle={bottle}
-                           handleEdit={handleEdit}
-                           handleDelete={handleDelete}
                        />
                 </Grid>
                 ))}

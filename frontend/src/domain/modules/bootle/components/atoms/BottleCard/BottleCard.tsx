@@ -1,6 +1,6 @@
 
 import Bottle from "../../../models/Bottle.model.ts";
-import {Card, CardActionArea, CardActions, CardContent, CardMedia} from "@mui/material";
+import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
 import AbstractCardTitle
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
 import AbstractCardBody
@@ -9,21 +9,26 @@ import AbstractCardAmount
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
 import AbstractCardRating
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
-import AbstractCard
-    from "../../../../../../core/modules/abstract/components/card/components/molecules/AbstractCard.tsx";
 import AbstractCardType
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
+import {useNavigate} from "react-router-dom";
+
 
 
 interface BottleCardProps {
     bottle : Bottle;
-    handleEdit : (val : string) => void;
-    handleDelete : (val : string) => void;
 }
 
+
+// @ts-ignore
 const BottleCard = ({ bottle, handleEdit, handleDelete } : BottleCardProps) => {
+    const navigate = useNavigate();
+
+    const handleClick =()=>{
+        navigate(`/bottles/detail/${bottle.id}`)
+    }
     return (
-        <Card key={bottle.id} style={{width:220}}>
+        <Card key={bottle.id} style={{width:220}}  onClick={handleClick}>
             <CardActionArea>
             <CardMedia
                 component="img"
@@ -40,9 +45,6 @@ const BottleCard = ({ bottle, handleEdit, handleDelete } : BottleCardProps) => {
                 <AbstractCardRating  rating={bottle.rating}/>
             </CardContent>
         </CardActionArea>
-         <CardActions>
-        <AbstractCard  handleDelete={handleDelete} handleEdit={handleEdit} id={bottle.id} children=""/>
-        </CardActions>
         </Card>
     );
 }

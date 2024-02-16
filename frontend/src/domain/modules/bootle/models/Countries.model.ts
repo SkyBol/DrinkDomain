@@ -1,10 +1,10 @@
-import Bottle from "./Bottle.model.ts";
+
 
 type Country = {
     code: string;
     label: string;
 }
-export const countryList  = [
+export const countryList:Country[]  = [
 { code: 'AD', label: 'Andorra' },
 { code: 'AE', label: 'United Arab Emirates',},
 { code: 'AF', label: 'Afghanistan' },

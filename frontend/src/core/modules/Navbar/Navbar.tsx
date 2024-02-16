@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import MyMenu from "./Menu.tsx";
+import {useState} from "react";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -49,11 +50,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const handleMenuClick = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const handleClose = () => {
+        setMenuOpen(false);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{backgroundColor:"black"}}>
                 <Toolbar>
-                        <MyMenu handleClick={""} handleClose={""}></MyMenu>
+                        <MyMenu handleClick={handleMenuClick} handleClose={handleClose}></MyMenu>
                     <Typography
                         variant="h6"
                         noWrap

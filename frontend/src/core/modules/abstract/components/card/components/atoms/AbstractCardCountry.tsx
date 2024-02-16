@@ -7,6 +7,7 @@ type AbstractDropDownParams = {
     formik: any;
 }
 const AbstractFormDropDown = ({ id, options, formik }:AbstractDropDownParams) => {
+    // @ts-ignore
     const handleOnChange = (event: React.ChangeEvent<{}>, value: { code: string; label: string } | null) => {
         formik.setFieldValue(id, value?.code || ''); // Set the selected country code as the formik field value
     };

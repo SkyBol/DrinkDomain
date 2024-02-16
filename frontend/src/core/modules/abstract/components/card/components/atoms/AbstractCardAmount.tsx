@@ -6,8 +6,8 @@ interface AbstractCardAmountProps {
 
 const AbstractCardAmount = ({ amount} : AbstractCardAmountProps) => {
     return (
-        <Typography variant="h8" component="div">
-            Anzahl : {amount}
+        <Typography variant="body1" component="div">
+            Lager : {amount}
         </Typography>
     )
 }

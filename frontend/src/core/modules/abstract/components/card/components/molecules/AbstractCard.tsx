@@ -8,8 +8,9 @@ interface AbstractCardProps {
 }
 
 const AbstractCard = ({ handleEdit, handleDelete, id, children } : AbstractCardProps) => {
+    console.log(id)
     return (
-        <MuiCard sx={{ minWidth: 275 }}>
+        <MuiCard sx={{ minWidth: 200 }}>
             <CardContent>
                 { children }
                 <CardActions>

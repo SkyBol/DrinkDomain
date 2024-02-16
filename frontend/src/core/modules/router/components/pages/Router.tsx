@@ -7,6 +7,7 @@ import BottlePage from "../../../../../domain/modules/bootle/components/pages/Bo
 import AbstractFormGenerated from '../../../abstract/components/form/components/molecules/AbstractFormGenerated';
 import {defaultBottle} from '../../../../../domain/modules/bootle/models/Bottle.model.ts';
 import BottleTable from "../../../../../domain/modules/bootle/components/pages/BottleTable/BottleTable.tsx";
+import BottleDetailPage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottleDetailPage.tsx";
 
 
 
@@ -27,6 +28,7 @@ const Router = () => {
       <Route path={'/users/'} element={<UserTable />} />
 
       <Route path={'/bottles/:bottleId'} element={<BottlePage/>}/>
+      <Route path={'/bottles/detail/:bottleId'} element={<BottleDetailPage/>}/>
       <Route path={'/bottles/add'} element={<BottlePage/>}/>
       <Route path={'/bottles'}>
         <Route path='' element={<BottleTable />} />

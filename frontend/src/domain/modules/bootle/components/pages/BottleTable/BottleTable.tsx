@@ -3,11 +3,11 @@ import Bottle from "../../../models/Bottle.model.ts";
 import BottleService from "../../../services/BottleService.ts";
 
 import BottleList from "../../molecules/ReminderList/BottleList.tsx";
-import {useNavigate} from "react-router-dom";
+
 
 
 const BottleTable = () => {
-    const navigate = useNavigate();
+
     const [bottles, setBottles] = useState<Bottle[]>([])
 
     useEffect(() => {
@@ -16,21 +16,12 @@ const BottleTable = () => {
             setBottles(res.data);
         });
     }, []);
-    const handleEdit = (id: string) => {
-        console.log("Does the Edit work"+id)
-        navigate('/bottles/' + id);
-    };
-    const handleDelete = (id: string) => {
-        BottleService.delete(id);
-        setBottles(bottles.filter((ele) => ele.id !== id))
-    };
+
 
     return (
         <div style={{padding:15}}>
         <BottleList
             bottles={bottles}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
             />
         </div>
     )
