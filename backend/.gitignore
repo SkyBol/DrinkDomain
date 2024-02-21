@@ -52,5 +52,5 @@ Thumbs.db
 /gradlew.bat
 /.idea/
 /build/
-gradle/
-.gradle/
+#gradle/
+/.gradle/
