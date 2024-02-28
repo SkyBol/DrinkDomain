@@ -1,24 +1,69 @@
+import { styled } from "@mui/material";
 import FallingName from "../atoms/FallingName";
 
-type FallingNamesProps = {}
+type FallingNamesProps = {
+    children?: React.ReactNode | React.ReactNode[]; // TODO
+    childrenInBack?: boolean; // TODO
+}
 
-const FallingNames = () => {
+const names = [
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    {
+        id: "test",
+        name: "test",
+    },
+    
+]
+
+const Wrapper = styled('div')(() => ({
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    containerType: 'size',
+    overflow: 'hidden',
+}));
+
+const FallingNames = ({children, childrenInBack} : FallingNamesProps) => {
     return (
-        <div style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            pointerEvents: 'none',
-        }}>
-            <FallingName
-                entry={{
-                    id: "test",
-                    name: "test",
-                }}
-            />
-        </div>
+        <Wrapper>
+            {
+                names.map((ele) => 
+                    <FallingName
+                        entry={ele}
+                        properties={{animationDelay: Math.random() * 4}}
+                    />
+                )
+            }
+            { children }
+        </Wrapper>
     );
 }
 
