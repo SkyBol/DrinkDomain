@@ -76,7 +76,7 @@ export default function SearchAppBar() {
                     >
                         DRINKDOMAIN
                     </Typography>
-                    <Search>
+                    <Search style={{flex:"auto",flexGrow:1}}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>

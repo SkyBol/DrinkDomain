@@ -1,8 +1,14 @@
 import {Rating, styled, Typography} from "@mui/material";
+import BottleType from "../../../../../../../domain/modules/bootle/models/BottleTypes.model.ts";
+
 import LocalBarIcon from '@mui/icons-material/LocalBar';
+import HiveIcon from '@mui/icons-material/Hive';
+import WineBarIcon from '@mui/icons-material/WineBar';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
 
 interface AbstractCardRatingProps {
     rating : number;
+    type: BottleType;
 }
 ;
 const StyledRating = styled(Rating)({
@@ -13,7 +19,21 @@ const StyledRating = styled(Rating)({
         color: 'grey', // Farbe des leeren Symbols ändern
     },
 })
-const AbstractCardRating = ({ rating } : AbstractCardRatingProps) => {
+
+const RatingIcon =({type}:{type:BottleType})=>{
+    switch (type){
+        case BottleType.Bier:
+            return <SportsBarIcon  fontSize="inherit"/>
+        case BottleType.Wein:
+            return <WineBarIcon  fontSize="inherit"/>
+        case BottleType.Met:
+            return <HiveIcon  fontSize="inherit"/>
+        default:
+            return <LocalBarIcon  fontSize="inherit"/>
+    }
+}
+
+const AbstractCardRating = ({ rating, type } : AbstractCardRatingProps) => {
 
     return (
         <Typography variant="h5" component="div">
@@ -22,8 +42,8 @@ const AbstractCardRating = ({ rating } : AbstractCardRatingProps) => {
                 value={rating}
                 readOnly
                 precision={0.5}
-                icon={<LocalBarIcon fontSize="inherit" />}
-                emptyIcon={<LocalBarIcon fontSize="inherit" />}
+                icon={<RatingIcon type={type} />}
+                emptyIcon={<RatingIcon type={type} />}
             />
         </Typography>
     )

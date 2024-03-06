@@ -12,7 +12,6 @@ const BottleTable = () => {
 
     useEffect(() => {
         BottleService.getAll().then((res) => {
-            console.log(res)
             setBottles(res.data);
         });
     }, []);

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import BottleService from "../../../services/BottleService.ts";
 import BottleForm from "../../molecules/BottleForm/BottleForm.tsx";
 import Bottle, {defaultBottle} from "../../../models/Bottle.model.ts";
+import ImageService from "../../../services/ImageService.ts";
 
 const BottlePage = () => {
     const navigate = useNavigate();
@@ -23,10 +24,14 @@ const BottlePage = () => {
 
     const submitActionHandler = (values: Bottle) => {
         if (bottleId === undefined) {
+
+            ImageService.save(values.img)
             BottleService.save(values).then(() => {
                 navigate(-1);
             });
+
         } else {
+            ImageService.update(values.img,values.id)
             BottleService.update( values,values.id).then(() => {
                 navigate(-1);
             });

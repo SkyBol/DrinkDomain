@@ -7,7 +7,6 @@ interface AbstractCardTypeProps {
 }
 
 const AbstractCardType = ({ type,country, children } : AbstractCardTypeProps) => {
-    console.log(country)
     return (
         <Typography variant="h5" component="div">
             <img src={`https://flagcdn.com/w20/${country?.toLowerCase()}.png`} alt={"picture of the bottle"}

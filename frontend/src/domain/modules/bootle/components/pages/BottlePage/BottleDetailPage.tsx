@@ -37,13 +37,12 @@ const BottleDetailPage = () => {
 
     return (
         <div>
+
             {loading ? (
                 <Typography variant="body1">Loading...</Typography>
             ) : bottle ? (
         <div>
-            <AbstractCard handleDelete={handleDelete} handleEdit={handleEdit} id={bottle.id}>
-                {bottle.name} {bottle.description}
-            </AbstractCard>
+            <AbstractCard handleDelete={handleDelete} handleEdit={handleEdit} id={bottle.id} bottle={bottle} />
 
         </div>
             ) : (

@@ -8,6 +8,7 @@ type BottleListProps = {
 }
 
 const BottleList = ({ bottles } : BottleListProps) => {
+
     return (
         <>
             <Grid container spacing={4} direction={"row"}>
