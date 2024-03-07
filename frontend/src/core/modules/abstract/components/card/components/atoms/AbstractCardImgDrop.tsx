@@ -10,7 +10,7 @@ const AbstractCardImgDrop = ({ id,formik }: AbstractDropDownParams) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
-        const file = acceptedFiles[0];
+        const file  = acceptedFiles[0];
         const reader = new FileReader();
 
 

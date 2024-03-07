@@ -23,6 +23,7 @@ const BottlePage = () => {
     }, [bottleId]);
 
     const submitActionHandler = (values: Bottle) => {
+        console.log("These are values"+values)
         if (bottleId === undefined) {
 
             ImageService.save(values.img)

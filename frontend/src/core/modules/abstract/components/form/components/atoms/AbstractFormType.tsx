@@ -12,6 +12,7 @@ const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
         formik.setFieldValue(id, value || '');
     };
 
+
     const initialValue = formik.values[id];
 
     return (

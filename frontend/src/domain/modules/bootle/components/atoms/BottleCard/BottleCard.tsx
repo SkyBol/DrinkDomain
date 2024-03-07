@@ -7,35 +7,53 @@ import AbstractCardRating from "../../../../../../core/modules/abstract/componen
 import AbstractCardType from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
 import { useNavigate } from "react-router-dom";
 import BottleType from "../../../models/BottleTypes.model.ts";
-import ImageService from "../../../services/ImageService.ts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface BottleCardProps {
     bottle: Bottle;
 }
 
-const BottleCard= ({ bottle }:BottleCardProps) => {
+const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
     const navigate = useNavigate();
+    const [imageURL, setImageURL] = useState<string | undefined>(undefined);
 
-    const [imageURL, setImageURL] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!bottle.img) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const dataURL = reader.result as string;
+            setImageURL(dataURL);
+        };
+        const blob = new Blob([JSON.stringify(bottle.img)], { type: 'application/json' });
+        reader.readAsDataURL(blob);
+        reader.onload = function(event) {
+            if(event !== null){
+            const content = event.target.result;
+            fetchData(content.toString())
+            }
+        }
+    }, [bottle.img]);
+    const fetchData = async (content:string) => {
+        try {
+            const response = await fetch(content);
+            const dataText = await response.text();
+            const jsonString = dataText.toString();
+            const jsonObject = JSON.parse(jsonString);
+            const imageURL = jsonObject.path;
+            console.log("imageURL = "+imageURL)
+            setImageURL(imageURL)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     const handleClick = async () => {
-        console.log("This is the bottleName "+bottle.img)
-        navigate(`/bottles/detail/${bottle.id}`);
         try {
-
-            const response = await ImageService.get(bottle.img);
-            const fetchedImageURL = response.data;
-
-            if (typeof fetchedImageURL === "string") {
-
-                setImageURL(fetchedImageURL);
-            } else {
-                console.error("Error: Image URL is not a string.");
-            }
             navigate(`/bottles/detail/${bottle.id}`);
         } catch (error) {
-            console.error("Error fetching image:", error);
+            console.error("Error navigating:", error);
         }
     };
 

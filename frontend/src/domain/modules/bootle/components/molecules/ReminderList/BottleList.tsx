@@ -16,6 +16,7 @@ const BottleList = ({ bottles } : BottleListProps) => {
             {bottles.map((bottle) => (
                 <Grid item xs={1.5} key={bottle.id}>
                        <BottleCard
+
                            bottle={bottle}
                        />
                 </Grid>
