@@ -22,16 +22,12 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
         if (!bottle.img) return;
 
         const reader = new FileReader();
-        reader.onload = () => {
-            const dataURL = reader.result as string;
-            setImageURL(dataURL);
-        };
         const blob = new Blob([JSON.stringify(bottle.img)], { type: 'application/json' });
         reader.readAsDataURL(blob);
         reader.onload = function(event) {
-            if(event !== null){
+            if(event !== null && event.target){
             const content = event.target.result;
-            fetchData(content.toString())
+            content && fetchData(content.toString()).then((res)=>(setImageURL(res),console.log(res)))
             }
         }
     }, [bottle.img]);
@@ -43,7 +39,7 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
             const jsonObject = JSON.parse(jsonString);
             const imageURL = jsonObject.path;
             console.log("imageURL = "+imageURL)
-            setImageURL(imageURL)
+            return imageURL
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -64,7 +60,7 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
                     component="img"
                     height="140"
                     width="140"
-                    image={imageURL}
+                    image={`http://localhost:8081/storage/${imageURL}`}
                     alt="default bottle"
                 />
                 <CardContent>
