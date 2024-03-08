@@ -1,13 +1,18 @@
 import Bottle from "../../../models/Bottle.model.ts";
-import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
-import AbstractCardTitle from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
-import AbstractCardBody from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardBody.tsx";
-import AbstractCardAmount from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
-import AbstractCardRating from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
-import AbstractCardType from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
-import { useNavigate } from "react-router-dom";
+import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
+import AbstractCardTitle
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
+import AbstractCardBody
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardBody.tsx";
+import AbstractCardAmount
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
+import AbstractCardRating
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
+import AbstractCardType
+    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
+import {useNavigate} from "react-router-dom";
 import BottleType from "../../../models/BottleTypes.model.ts";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 interface BottleCardProps {
     bottle: Bottle;
@@ -27,7 +32,7 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
         reader.onload = function(event) {
             if(event !== null && event.target){
             const content = event.target.result;
-            content && fetchData(content.toString()).then((res)=>(setImageURL(res),console.log(res)))
+            content && fetchData(content.toString()).then((res)=>(setImageURL(res)))
             }
         }
     }, [bottle.img]);
@@ -37,9 +42,7 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
             const dataText = await response.text();
             const jsonString = dataText.toString();
             const jsonObject = JSON.parse(jsonString);
-            const imageURL = jsonObject.path;
-            console.log("imageURL = "+imageURL)
-            return imageURL
+            return jsonObject.path
         } catch (error) {
             console.error('Error fetching data:', error);
         }

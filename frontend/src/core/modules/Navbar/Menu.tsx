@@ -21,6 +21,7 @@ const MyMenu = ({handleClick, handleClose}:MenuProps) => {
     };
 
     const handleMenuClose = (navigation:string) => {
+
         setAnchorEl(null);
         navigate(navigation)
         handleClose(false);

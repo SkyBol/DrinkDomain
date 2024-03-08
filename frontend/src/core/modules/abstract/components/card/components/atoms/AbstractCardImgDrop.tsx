@@ -1,13 +1,21 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import { useDropzone } from 'react-dropzone';
 
 type AbstractDropDownParams = {
     id: string;
+    image?: File|null;
     formik: any;
 };
 
-const AbstractCardImgDrop = ({ id,formik }: AbstractDropDownParams) => {
+const AbstractCardImgDrop = ({ id,image,formik }: AbstractDropDownParams) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+
+    useEffect(() => {
+        if(image) {
+            setImageUrl(`http://localhost:8081/storage/${(image as any).path}`)
+        }
+    }, [image]);
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         const file  = acceptedFiles[0];
@@ -35,11 +43,10 @@ const AbstractCardImgDrop = ({ id,formik }: AbstractDropDownParams) => {
         }}>
             <input {...getInputProps()} />
             {
-                isDragActive ?
-                    <p>Drop the files here ...</p> :
+                isDragActive && imageUrl?
+                    <p>Genau so!</p> :
                     <p>Platzieren Sie ihr Bild hier</p>
             }
-            {/* Container for displaying the uploaded liquor image */}
             {imageUrl && (
                 <img
                     src={imageUrl}

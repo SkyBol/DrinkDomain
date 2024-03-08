@@ -28,7 +28,6 @@ const BottleDetailPage = () => {
         }, [bottleId]);
 
     const handleEdit = (id: string) => {
-        console.log("Does the Edit work"+id)
         navigate('/bottles/' + id);
     };
     const handleDelete = (id: string) => {

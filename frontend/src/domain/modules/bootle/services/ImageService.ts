@@ -1,5 +1,26 @@
 import AbstractService from "../../../../core/modules/abstract/services/AbstractService";
+import { AxiosResponse} from "axios";
+import api from "../../../../core/config/Api.ts";
 
-const ImageService = new AbstractService<String>("/storage/");
+class ImageService extends AbstractService<File> {
+    async post(data: File): Promise<AxiosResponse> {
+        // Create a FormData object
+        const formData = new FormData();
 
-export default ImageService;
+        // Check if data is a Blob
+        if (data instanceof Blob) {
+            // Create a File object from the Blob
+            const file = new File([data], data.name, { type: 'image/png' });
+            // Append the File object to the FormData
+            formData.append('file', file);
+        } else {
+            // If it's not a Blob, directly append it to FormData
+            formData.append('file', data);
+        }
+
+        // Call the parent class's post method with the FormData
+        return api.post(this.base, formData);
+    }
+}
+
+export default new ImageService("/storage/");

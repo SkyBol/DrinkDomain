@@ -12,6 +12,8 @@ import AbstractFormTextArea
     from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormBigTextArea.tsx";
 import AbstractFormType
     from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormType.tsx";
+import AbstractFormNumericField
+    from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormNumericField.tsx";
 
 
 
@@ -26,9 +28,10 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
         enableReinitialize: true,
     })
 
+
     return (
         <AbstractForm formik={formik}>
-            <AbstractCardImgDrop id="img" formik={formik}/>
+            <AbstractCardImgDrop id="img" image={bottle.img} formik={formik}/>
             <AbstractFormTextField id="name"/>
             <AbstractFormType id="type" formik={formik}/>
             <AbstractFormTextArea id="description"/>
@@ -36,8 +39,8 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
                 id="country"
                 options={countryList}
                 formik={formik}/>
-            <AbstractFormTextField id="amount"/>
-            <AbstractFormTextField id="rating"/>
+            <AbstractFormNumericField id="amount"/>
+            <AbstractFormNumericField id="rating"/>
             <AbstractFormButton>Save</AbstractFormButton>
         </AbstractForm>
     )
