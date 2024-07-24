@@ -20,8 +20,7 @@ import lombok.experimental.Accessors;
 @Entity
 @Table(name = "role")
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter@Setter
 @Accessors(chain = true)
 public class Role extends AbstractEntity {
 

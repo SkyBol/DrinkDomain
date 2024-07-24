@@ -1,18 +1,14 @@
 package com.example.demo.domain.storage;
 
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
-import java.util.stream.Stream;
-
+import java.util.UUID;
 
 public interface StorageService {
-    void store(MultipartFile file);
+    Storage store(MultipartFile file);
 
-    Stream<Path> loadAll();
+    ByteArrayResource getFileAsResource(UUID storageId);
 
-    Path load(String filename);
-
-    Resource loadAsResource(String filename);
+    void deleteFile(UUID fileId);
 }
