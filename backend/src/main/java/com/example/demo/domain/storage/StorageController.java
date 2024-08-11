@@ -30,7 +30,7 @@ public class StorageController {
                 .body(byteArrayResource);
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     public ResponseEntity<Storage> handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         return ResponseEntity.ok(storageService.store(file));
     }

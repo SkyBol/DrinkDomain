@@ -1,7 +1,7 @@
 
 type Bottle = {
     id : string;
-    img: File | null;
+    img_id: string;
     name : string;
     type: string,
     description ?: string;
@@ -12,7 +12,7 @@ type Bottle = {
 
 export const defaultBottle : Bottle = {
     id: "",
-    img: null,
+    img_id: "",
     name: "",
     type: "",
     description: "",
