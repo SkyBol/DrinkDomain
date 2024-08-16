@@ -8,26 +8,33 @@ import AbstractFormGenerated from '../../../abstract/components/form/components/
 import { defaultBottle } from '../../../../../domain/modules/bootle/models/Bottle.model.ts';
 import BottleTable from "../../../../../domain/modules/bootle/components/pages/BottleTable/BottleTable.tsx";
 import BottleDetailPage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottleDetailPage.tsx";
+import GuestBookEntryPage from '../../../../../domain/modules/guestbook/components/pages/GuestBookEntryPage.tsx';
 
 const Router = () => {
-
     return (
         <Routes>
-            <Route path={'/'} element={<Homepage/>} />
+            {/* Core Routes */}
+            <Route path={'/users'}>
+                <Route path={'/users/add'} element={<UserPage />} />
+                <Route path={'/users/:userId'} element={<UserPage />} />
+                <Route path={'*'} element={<UserTable />} />
+            </Route>
 
             <Route path={'/login'} element={<Login/>} />
 
-            <Route path={'/users/:userId'} element={<UserPage />} />
-            <Route path={'/users/add'} element={<UserPage />} />
-            <Route path={'/users/'} element={<UserTable />} />
 
-            <Route path={'/bottles/add'} element={<BottlePage/>} />
-            <Route path={'/bottles/:bottleId'} element={<BottlePage/>}/>
-            <Route path={'/bottles/detail/:bottleId'} element={<BottleDetailPage/>}/>
+            {/* Domain Routes */}
+            <Route path={'/'} element={<Homepage/>} />
+
             <Route path={'/bottles'}>
+                <Route path={'/bottles/add'} element={<BottlePage/>} />
+                <Route path={'/bottles/:bottleId'} element={<BottlePage/>}/>
+                <Route path={'/bottles/detail/:bottleId'} element={<BottleDetailPage/>}/>
                 <Route path='' element={<BottleTable />} />
                 <Route path='test' element={<AbstractFormGenerated object={defaultBottle} submitActionHandler={() => {}}/>} />
             </Route>
+
+            <Route path={'/guestBook'} element={<GuestBookEntryPage/>} />
 
             <Route path='*' element={<div>Not Found</div>} />
         </Routes>

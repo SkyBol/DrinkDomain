@@ -1,0 +1,19 @@
+version: '2.7'
+
+services:
+  backend:
+    build: .
+    container_name: backend
+    ports:
+      - 8085:8080
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - 8086:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
