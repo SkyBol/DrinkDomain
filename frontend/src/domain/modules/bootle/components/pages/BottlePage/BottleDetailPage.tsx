@@ -3,8 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Bottle from "../../../models/Bottle.model.ts";
 import BottleService from "../../../services/BottleService.ts";
-import AbstractCard
-    from "../../../../../../core/modules/abstract/components/card/components/molecules/AbstractCard.tsx";
+import AbstractCard from "../../../../../../core/modules/abstract/components/card/components/molecules/AbstractCard.tsx";
 
 
 

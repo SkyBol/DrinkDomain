@@ -3,17 +3,28 @@ import { useDropzone } from 'react-dropzone';
 
 type AbstractDropDownParams = {
     id: string;
-    image?: File|null;
+    image?: File | string | null;
     formik: any;
 };
 
-const AbstractCardImgDrop = ({ id,image,formik }: AbstractDropDownParams) => {
+const AbstractCardImgDrop = ({ id, image, formik }: AbstractDropDownParams) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
 
+    const getImageId = (): string => {
+        if (!image) {
+            return '';
+        }
+
+        if (typeof image === 'string') {
+            return image;
+        } else {
+            return (image as any).path
+        }
+    }
 
     useEffect(() => {
-        if(image) {
-            setImageUrl(`http://localhost:8081/storage/${(image as any).path}`)
+        if (image) {
+            setImageUrl(`http://localhost:8081/storage/${getImageId()}`)
         }
     }, [image]);
 

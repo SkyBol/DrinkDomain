@@ -20,12 +20,9 @@ const BottlePage = () => {
     }, [bottleId]);
 
     const submitActionHandler = async (values: Bottle) => {
-        console.log(values.img)
         try {
-            if(values.img !== null) {
-                await ImageService.post(values.img);
+            
 
-            }
             if (bottleId === undefined) {
                 await BottleService.save(values);
             } else {
