@@ -4,26 +4,20 @@ import {Grid} from "@mui/material";
 
 type BottleListProps = {
     bottles : Bottle[];
-
 }
 
 const BottleList = ({ bottles } : BottleListProps) => {
 
     return (
-        <>
-            <Grid container spacing={4} direction={"row"}>
-
+        <Grid container spacing={4} direction={"row"}>
             {bottles.map((bottle) => (
                 <Grid item xs={1.5} key={bottle.id}>
-                       <BottleCard
-
-                           bottle={bottle}
-                       />
+                    <BottleCard
+                        bottle={bottle}
+                    />
                 </Grid>
-                ))}
-
-                </Grid>
-        </>
+            ))}
+        </Grid>
     )
 }
 

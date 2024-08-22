@@ -31,7 +31,7 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
 
     return (
         <AbstractForm formik={formik}>
-            <AbstractCardImgDrop id="img" image={bottle.img} formik={formik}/>
+            <AbstractCardImgDrop id="img_id" formik={formik}/>
             <AbstractFormTextField id="name"/>
             <AbstractFormType id="type" formik={formik}/>
             <AbstractFormTextArea id="description"/>

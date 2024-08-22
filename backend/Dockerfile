@@ -12,7 +12,7 @@ FROM openjdk:18
 RUN mkdir /app
 # Copy the built JAR file from the build stage to /app in the new image
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-# Expose port 8080 for the Spring Boot application
-EXPOSE 8080
+# Expose port 8081 for the Spring Boot application
+EXPOSE 8081
 # Run the Spring Boot application as a Java application with specified memory options
 CMD ["java", "-jar", "-Xmx4g", "/app/spring-boot-application.jar"]

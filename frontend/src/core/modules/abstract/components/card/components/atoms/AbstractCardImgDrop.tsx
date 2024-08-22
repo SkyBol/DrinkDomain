@@ -1,45 +1,22 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback} from 'react';
 import { useDropzone } from 'react-dropzone';
+import ImageService from '../../../../../../../domain/modules/bootle/services/ImageService';
 
 type AbstractDropDownParams = {
     id: string;
-    image?: File | string | null;
     formik: any;
 };
 
-const AbstractCardImgDrop = ({ id, image, formik }: AbstractDropDownParams) => {
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-    const getImageId = (): string => {
-        if (!image) {
-            return '';
-        }
-
-        if (typeof image === 'string') {
-            return image;
-        } else {
-            return (image as any).path
-        }
-    }
-
-    useEffect(() => {
-        if (image) {
-            setImageUrl(`http://localhost:8081/storage/${getImageId()}`)
-        }
-    }, [image]);
+const AbstractCardImgDrop = ({ id, formik }: AbstractDropDownParams) => {
+    const image: string = formik.values[id]
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         const file  = acceptedFiles[0];
-        const reader = new FileReader();
 
-
-        reader.onload = () => {
-            const fileName = reader.result as string;
-            setImageUrl(fileName);
-            formik.setFieldValue(id, file)
-        };
-
-        reader.readAsDataURL(file);
+        ImageService.save(file)
+            .then(({data: {id: savedImageId}}) => {
+                formik.setFieldValue(id, savedImageId)
+            });
     }, []);
 
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
@@ -54,13 +31,13 @@ const AbstractCardImgDrop = ({ id, image, formik }: AbstractDropDownParams) => {
         }}>
             <input {...getInputProps()} />
             {
-                isDragActive && imageUrl?
+                isDragActive && image?
                     <p>Genau so!</p> :
                     <p>Platzieren Sie ihr Bild hier</p>
             }
-            {imageUrl && (
+            {image && (
                 <img
-                    src={imageUrl}
+                    src={image && ImageService.imageUrl(image)}
                     alt="Uploaded Liquor Image"
                     style={{
                         width: '100%',

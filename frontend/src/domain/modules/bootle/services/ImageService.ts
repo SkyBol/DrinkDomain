@@ -3,7 +3,7 @@ import { AxiosResponse} from "axios";
 import api from "../../../../core/config/Api.ts";
 
 class ImageService extends AbstractService<File> {
-    async post(data: File): Promise<AxiosResponse> {
+    async save(data: File): Promise<AxiosResponse> {
         // Create a FormData object
         const formData = new FormData();
 
@@ -20,6 +20,12 @@ class ImageService extends AbstractService<File> {
 
         // Call the parent class's post method with the FormData
         return api.post(this.base, formData);
+    }
+
+    imageUrl(imageId: string): string {
+        const baseURL = import.meta.env.VITE_REACT_APP_BASEURL;
+
+        return `${baseURL}${this.base}${imageId}`;
     }
 }
 

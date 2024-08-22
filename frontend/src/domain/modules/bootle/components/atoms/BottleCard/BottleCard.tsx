@@ -12,7 +12,7 @@ import AbstractCardType
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
 import {useNavigate} from "react-router-dom";
 import BottleType from "../../../models/BottleTypes.model.ts";
-import {useEffect, useState} from "react";
+import ImageService from "../../../services/ImageService.ts";
 
 interface BottleCardProps {
     bottle: Bottle;
@@ -20,33 +20,6 @@ interface BottleCardProps {
 
 const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
     const navigate = useNavigate();
-    const [imageURL, setImageURL] = useState<string | undefined>(undefined);
-
-
-    useEffect(() => {
-        if (!bottle.img) return;
-
-        const reader = new FileReader();
-        const blob = new Blob([JSON.stringify(bottle.img)], { type: 'application/json' });
-        reader.readAsDataURL(blob);
-        reader.onload = function(event) {
-            if(event !== null && event.target){
-            const content = event.target.result;
-            content && fetchData(content.toString()).then((res)=>(setImageURL(res)))
-            }
-        }
-    }, [bottle.img]);
-    const fetchData = async (content:string) => {
-        try {
-            const response = await fetch(content);
-            const dataText = await response.text();
-            const jsonString = dataText.toString();
-            const jsonObject = JSON.parse(jsonString);
-            return jsonObject.path
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
 
     const handleClick = async () => {
         try {
@@ -63,7 +36,7 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
                     component="img"
                     height="140"
                     width="140"
-                    image={`http://localhost:8081/storage/${imageURL}`}
+                    image={ImageService.imageUrl(bottle.img_id)}
                     alt="default bottle"
                 />
                 <CardContent>

@@ -1,10 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
 import BottleService from "../../../services/BottleService.ts";
 import BottleForm from "../../molecules/BottleForm/BottleForm.tsx";
 import Bottle, { defaultBottle } from "../../../models/Bottle.model.ts";
-import ImageService from "../../../services/ImageService.ts";
 
 const BottlePage = () => {
     const navigate = useNavigate();
@@ -21,8 +19,6 @@ const BottlePage = () => {
 
     const submitActionHandler = async (values: Bottle) => {
         try {
-            
-
             if (bottleId === undefined) {
                 await BottleService.save(values);
             } else {
