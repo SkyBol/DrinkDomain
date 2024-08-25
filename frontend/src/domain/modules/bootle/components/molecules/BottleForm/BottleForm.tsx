@@ -26,7 +26,7 @@ const BottleForm = ({ bottle, submitActionHandler } : BottleFormProps) => {
         initialValues: bottle,
         onSubmit: submitActionHandler,
         enableReinitialize: true,
-    })
+    });
 
 
     return (

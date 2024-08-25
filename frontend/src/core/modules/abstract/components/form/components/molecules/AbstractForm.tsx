@@ -3,7 +3,7 @@ import React from 'react';
 //import TextField from '../atoms/TextField';
 
 type AbstractFormParams = {
-    children : React.ReactElement | React.ReactElement[];
+    children : React.ReactElement | (React.ReactElement | null)[] | null;
     //onSubmit : (e : any) => void;
     formik : FormikProps<any>;
 }
@@ -11,13 +11,19 @@ type AbstractFormParams = {
 
 const AbstractForm = ({children, formik} : AbstractFormParams) => {
     const loadChildren = () => {
+        if (children === null) {
+            return null;
+        }
+
         if (Array.isArray(children)) {
-            return (children as React.ReactElement[]).map((child) => {
-                return React.cloneElement(child, {
-                    formik: formik,
-                    key: child.props.id,
+            return (children as React.ReactElement[])
+                .filter((child) => child !== null)
+                .map((child) => {
+                    return React.cloneElement(child, {
+                        formik: formik,
+                        key: child.props.id,
+                    });
                 });
-            });
         } else {
             return React.cloneElement(children, {
                 formik: formik,

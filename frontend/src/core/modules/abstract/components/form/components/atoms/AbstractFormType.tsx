@@ -4,7 +4,7 @@ import BottleType from "../../../../../../../domain/modules/bootle/models/Bottle
 
 type AbstractTypeParams = {
     id: string;
-    formik: any;
+    formik?: any;
 }
 
 const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
