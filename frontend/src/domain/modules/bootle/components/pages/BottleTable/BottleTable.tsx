@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Bottle from "../../../models/Bottle.model.ts";
 import BottleService from "../../../services/BottleService.ts";
-import BottleList from "../../molecules/ReminderList/BottleList.tsx";
+import BottleList from "../../molecules/BottleList/BottleList.tsx";
 
 const BottleTable = () => {
 
