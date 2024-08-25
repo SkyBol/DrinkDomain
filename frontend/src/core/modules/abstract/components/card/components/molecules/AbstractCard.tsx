@@ -14,7 +14,7 @@ const AbstractCard = ({ handleEdit, handleDelete, id, bottle } : AbstractCardPro
 
 
     return (
-        <div style={{position:"relative"}}>
+        <div style={{position:"relative", overflow:"hidden"}}>
             <VideoBackground />
             <div style={{position: "absolute",
                 top: "50%",

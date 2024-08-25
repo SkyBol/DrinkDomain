@@ -1,22 +1,31 @@
-import rumVideo from "../../../../../../assets/videos/rumBg.mp4"
+import rumVideo from "../../../../../../assets/videos/rumBg.mp4";
 
 const CardVideoBackground = () => {
-
     return (
-
-        <div>
+        <div
+            style={{
+                position: "relative",
+                overflow: "hidden",
+                width: "100vw",
+                height: "100vh",
+            }}
+        >
             <video
                 src={rumVideo}
                 autoPlay
                 loop
                 muted
                 style={{
-                    width: "100%",
-                    height: "100%",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    height: "100vh",
+                    width: "auto",
                 }}
             />
         </div>
-    )
+    );
+};
 
-}
-export default CardVideoBackground
+export default CardVideoBackground;
