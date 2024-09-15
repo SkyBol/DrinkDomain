@@ -24,6 +24,7 @@ export const GuestBookEntryPage = () => {
 
   const formik = useFormik<GuestbookEntryForm>({
     initialValues: defaulGuestbookEntryForm,
+    
     onSubmit: createNewGuestBookEntry,
     enableReinitialize: true,
   });
