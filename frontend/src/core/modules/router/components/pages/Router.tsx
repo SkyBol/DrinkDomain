@@ -9,6 +9,7 @@ import { defaultBottle } from '../../../../../domain/modules/bootle/models/Bottl
 import BottleTable from "../../../../../domain/modules/bootle/components/pages/BottleTable/BottleTable.tsx";
 import BottleDetailPage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottleDetailPage.tsx";
 import GuestBookEntryPage from '../../../../../domain/modules/guestbook/components/pages/GuestBookEntryPage.tsx';
+import GuestBook from '../../../../../domain/modules/guestbook/components/pages/GuestBook.tsx';
 
 const Router = () => {
     return (
@@ -34,7 +35,8 @@ const Router = () => {
                 <Route path='test' element={<AbstractFormGenerated object={defaultBottle} submitActionHandler={() => {}}/>} />
             </Route>
 
-            <Route path={'/guestBook'} element={<GuestBookEntryPage/>} />
+            <Route path={'/guestBook'} element={<GuestBook/>} />
+            <Route path={'/guestBook/add'} element={<GuestBookEntryPage/>} />
 
             <Route path='*' element={<div>Not Found</div>} />
         </Routes>

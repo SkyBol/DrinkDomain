@@ -2,8 +2,6 @@ import Bottle from "../../../models/Bottle.model.ts";
 import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
 import AbstractCardTitle
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
-import AbstractCardBody
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardBody.tsx";
 import AbstractCardAmount
     from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
 import AbstractCardRating
@@ -42,7 +40,6 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
                 <CardContent>
                     <AbstractCardTitle>{bottle.name}</AbstractCardTitle>
                     <AbstractCardType country={bottle.country}>{bottle.type}</AbstractCardType>
-                    <AbstractCardBody>{bottle.description}</AbstractCardBody>
                     <AbstractCardAmount amount={bottle.amount} />
                     <AbstractCardRating rating={bottle.rating} type={bottle.type as BottleType} />
                 </CardContent>

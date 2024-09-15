@@ -1,16 +1,16 @@
-import FallingNames from "../../../../../../domain/modules/guestbook/components/molecules/FallingNames";
+import Carousel from "../../../../../../domain/modules/guestbook/components/molecules/Carousel";
+
 
 
 const Homepage = () => {
     
     return (
         <div>
-            <h1>Drink Domain</h1>
             <div style={{
                 height: '800px',
                 width: '1000px',
             }}>
-                <FallingNames />
+                <Carousel />
             </div>
         </div>
     )

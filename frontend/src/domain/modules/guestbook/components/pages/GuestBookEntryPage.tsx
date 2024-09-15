@@ -18,7 +18,7 @@ export const GuestBookEntryPage = () => {
     
 
     GuestbookService.save(values).then(() => {
-      navigate(-1);
+      navigate("/guestBook");
     });
   }
 
