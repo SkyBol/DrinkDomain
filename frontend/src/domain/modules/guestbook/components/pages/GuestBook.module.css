@@ -189,11 +189,19 @@ html, body {
     color: #fff;
     padding: 0.5rem;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left;
     font-size: 1.2rem;
     font-family: "Manrope", sans-serif;
     font-weight: 800;
     z-index: 2;
+  }
+
+  .description {
+    font-size: 0.8rem;
+    font-weight: 200;
+    width: 25rem;
+    
+
   }
 
   .text-light {
@@ -201,7 +209,7 @@ html, body {
     bottom: 0;
     right: 0;
     margin: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #fff;
     z-index: 2;
   }
@@ -218,3 +226,115 @@ html, body {
         column-gap: 0.5rem;
     }
 }
+
+
+@media (max-width: 1024px) {
+    
+    .title {
+        font-size: 1.2rem;
+        text-align: center;
+        word-spacing: 0.15em;
+    }
+
+    .link {
+        width: 6rem; 
+        height: 6rem;
+    }
+
+    .link__text {
+        font-size: 1rem;
+    }
+
+    .li {
+        max-width: 50%; 
+        position: relative;
+    }
+
+    .h3 {
+        position: absolute;
+        bottom: 2.5rem; 
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5); 
+        color: #fff;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        text-align: left;
+        font-size: 1.2rem;
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        z-index: 2;
+    }
+
+    .description {
+        display: block; 
+        margin-top: 0.5rem; 
+        font-size: 0.8rem;
+        font-weight: 200;
+        color: #fff;
+    }
+
+    .text-light {
+        position: absolute;
+        bottom: 0;
+        right: 0 !important;
+        margin-right: 0%;
+        font-size: 0.9rem; 
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5); 
+        
+        
+        z-index: 10; 
+        box-sizing: border-box;
+        width:100%; 
+        text-align: right; 
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .title {
+        font-size: 1rem;
+        text-align: center;
+        word-spacing: 0.1em;
+    }
+
+    .link {
+        width: 5rem; 
+        height: 5rem;
+    }
+
+    .link__text {
+        font-size: 1.5rem;
+    }
+
+    
+    .li {
+        max-width: 100%; 
+        position: relative; 
+    }
+
+    .text-light {
+        bottom: 0.1rem;
+        right: 0.3rem; 
+        font-size: 0.85rem; 
+        padding: 0.2rem 0.4rem;
+    }
+
+    .h3 {
+        bottom: 2rem; 
+        left: 0;
+        right: 0;
+        padding: 0.4rem;
+    }
+
+    .description {
+        font-size: 0.75rem;
+        margin-top: 0.3rem;
+        width: fit-content;
+    }
+}
+
+
+
+
