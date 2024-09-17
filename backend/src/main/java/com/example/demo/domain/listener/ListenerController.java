@@ -1,6 +1,5 @@
 package com.example.demo.domain.listener;
 
-import com.google.gson.Gson;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
