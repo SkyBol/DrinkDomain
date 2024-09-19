@@ -18,7 +18,7 @@ const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
     return (
         <Autocomplete
             id={id}
-            options={Object.values(BottleType)} // Assuming BottleType is an enum
+            options={Object.values(BottleType)} 
             autoHighlight
             value={initialValue}
             getOptionLabel={(option) => option}
@@ -28,8 +28,39 @@ const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
                     label={initialValue ? initialValue : "Choose a type"}
                     inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
+                       
                     }}
+                    
+     sx={{
+        "& .MuiOutlinedInput-root": {
+          color: "#000",
+          fontFamily: "Arial",
+          
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#5c5c5c",
+           
+          },
+          "&.Mui-focused": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#D4AF37",
+              
+            },
+          },
+          "&:hover:not(.Mui-focused)": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "black",
+            },
+          },
+        },
+        "& .MuiInputLabel-outlined": {
+          color: "#393635",
+         
+          "&.Mui-focused": {
+            color: "#D4AF37",
+            
+          },
+        },
+      }}
                 />
             )}
             onChange={handleOnChange}

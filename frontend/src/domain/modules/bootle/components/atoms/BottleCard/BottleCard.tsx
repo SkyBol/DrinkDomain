@@ -1,14 +1,10 @@
 import Bottle from "../../../models/Bottle.model.ts";
-import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
-import AbstractCardTitle
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
-import AbstractCardAmount
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
-import AbstractCardRating
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
-import AbstractCardType
-    from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
-import {useNavigate} from "react-router-dom";
+import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
+import AbstractCardTitle from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitle.tsx";
+import AbstractCardAmount from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardAmount.tsx";
+import AbstractCardRating from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardRating.tsx";
+import AbstractCardType from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardType.tsx";
+import { useNavigate } from "react-router-dom";
 import BottleType from "../../../models/BottleTypes.model.ts";
 import ImageService from "../../../services/ImageService.ts";
 

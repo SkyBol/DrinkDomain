@@ -11,7 +11,7 @@ type AbstractTextAreaParams = {
     autoFocus ?: boolean;
     disabled ?: boolean;
     type ?: string;
-    resizable ?: boolean; // Add resizable prop
+    resizable ?: boolean; 
 }
 
 const AbstractFormTextArea = ({formik, id, placeholder, fullWidth, required, autoFocus, disabled, type, resizable = true} : AbstractTextAreaParams) => {
@@ -34,10 +34,41 @@ const AbstractFormTextArea = ({formik, id, placeholder, fullWidth, required, aut
             error={Boolean(formik.errors[id])}
             helperText={String(formik.errors[id] ?? "")}
             type={type}
-            multiline={resizable} // Set multiline to true
-            minRows={3} // Set minimum number of rows
-            maxRows={10} // Set maximum number of rows
-            inputProps={{ style: { resize: resizable ? 'vertical' : 'none' } }} // Set resize style based on resizable prop
+            multiline={resizable} 
+            minRows={3} 
+            maxRows={10} 
+            inputProps={{ style: { resize: resizable ? 'vertical' : 'none' } }} 
+            
+     sx={{
+        "& .MuiOutlinedInput-root": {
+          color: "#000",
+          fontFamily: "Arial",
+          
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#5c5c5c",
+           
+          },
+          "&.Mui-focused": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#D4AF37",
+              
+            },
+          },
+          "&:hover:not(.Mui-focused)": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "black",
+            },
+          },
+        },
+        "& .MuiInputLabel-outlined": {
+          color: "#393635",
+         
+          "&.Mui-focused": {
+            color: "#D4AF37",
+            
+          },
+        },
+      }}
         />
     )
 }

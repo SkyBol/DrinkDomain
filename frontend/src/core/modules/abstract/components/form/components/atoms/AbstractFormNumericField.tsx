@@ -21,7 +21,7 @@ const AbstractFormNumericField = ({ formik, id, placeholder, fullWidth, required
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
 
-        // Validate the input to allow only numbers, integers, or floats
+        
         if (/^-?\d*\.?\d*$/.test(value) || value === '') {
             formik.handleChange(event);
         }
@@ -31,7 +31,7 @@ const AbstractFormNumericField = ({ formik, id, placeholder, fullWidth, required
         <TextFieldMui
             label={id}
             id={id}
-            placeholder={placeholder ?? ""}
+            placeholder={"1" ?? ""}
             fullWidth={fullWidth}
             required={required}
             autoFocus={autoFocus}
@@ -44,8 +44,39 @@ const AbstractFormNumericField = ({ formik, id, placeholder, fullWidth, required
             type={type}
             inputProps={{
                 inputMode: 'numeric',
-                pattern: '[-+]?[0-9]*[.,]?[0-9]+',
+                pattern: '[ +][0-9]*[.,]?[0-9]+',
             }}
+            
+     sx={{
+        "& .MuiOutlinedInput-root": {
+          color: "#000",
+          fontFamily: "Arial",
+          
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#5c5c5c",
+           
+          },
+          "&.Mui-focused": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#D4AF37",
+              
+            },
+          },
+          "&:hover:not(.Mui-focused)": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "black",
+            },
+          },
+        },
+        "& .MuiInputLabel-outlined": {
+          color: "#393635",
+         
+          "&.Mui-focused": {
+            color: "#D4AF37",
+            
+          },
+        },
+      }}
         />
     );
 }

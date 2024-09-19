@@ -10,9 +10,9 @@ position: relative;
 
 :root{
   --bg-shape-color:linear-gradient(120deg,  #343A4F, #0F1620) ;
- --lightblue: #3D9DEA;
- --darkblue: #4A4EEE;
- --text-color: #D5E1EF;
+ --lightblue: #D4AF37;
+ --darkblue: #D4AF37;
+ --text-color: #D4AF37;
 }
 
 html,body{
@@ -148,3 +148,4 @@ h3 {
 .cardActions button:first-of-type {
   margin-left: 0px; 
 }
+

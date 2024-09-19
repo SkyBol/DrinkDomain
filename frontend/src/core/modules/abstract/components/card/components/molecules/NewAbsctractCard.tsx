@@ -55,6 +55,8 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
                     <div className={styles.productImage}>
                         <img src={ImageService.imageUrl(bottle.img_id)} alt="product image" />
                     </div>
+                    {bottle.tags &&
+                    <div>{bottle.tags[0]}</div>}
                 </div>
             </div>
 

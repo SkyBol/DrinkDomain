@@ -1,10 +1,8 @@
 import { FormikProps } from 'formik';
 import React from 'react';
-//import TextField from '../atoms/TextField';
 
 type AbstractFormParams = {
     children : React.ReactElement | (React.ReactElement | null)[] | null;
-    //onSubmit : (e : any) => void;
     formik : FormikProps<any>;
 }
 

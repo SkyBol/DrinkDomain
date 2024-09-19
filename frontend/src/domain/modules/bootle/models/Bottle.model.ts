@@ -5,6 +5,7 @@ type Bottle = {
     name : string;
     type: string,
     description ?: string;
+    tags ?:string[];
     country ?: string;
     amount: number;
     rating: number;
@@ -16,6 +17,7 @@ export const defaultBottle : Bottle = {
     name: "",
     type: "",
     description: "",
+    tags: [],
     country: "",
     amount: 0,
     rating: 0,

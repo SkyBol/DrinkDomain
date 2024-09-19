@@ -7,7 +7,7 @@ interface AbstractCardTitleProps {
 
 const AbstractCardTitle = ({ name, children } : AbstractCardTitleProps) => {
     return (
-        <Typography variant="h4" component="div">
+        <Typography variant="h4" component="div" >
             {name ?? ""}{children ?? ""}
         </Typography>
     )

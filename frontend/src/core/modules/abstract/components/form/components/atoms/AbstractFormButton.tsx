@@ -17,7 +17,13 @@ const AbstractFormButton = ({formik, fullwidth, children, disabled} : AbstractFo
     return (
         <Button
             onClick={() => formik.handleSubmit()}
-            color='primary'
+            style={{color:"lightgrey"}}
+            sx={{
+                backgroundColor: '#3e8e41',
+                '&:hover': {
+                  backgroundColor: '#06af41',
+                },
+              }}
             variant='contained'
             fullWidth={fullwidth}
             disabled={!formik.isValid || formik.isSubmitting || !formik.dirty || disabled}

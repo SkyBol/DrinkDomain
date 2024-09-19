@@ -1,6 +1,7 @@
-import {useCallback} from 'react';
+import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import ImageService from '../../../../../../../domain/modules/bootle/services/ImageService';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 type AbstractDropDownParams = {
     id: string;
@@ -8,32 +9,39 @@ type AbstractDropDownParams = {
 };
 
 const AbstractCardImgDrop = ({ id, formik }: AbstractDropDownParams) => {
-    const image: string = formik.values[id]
+    const image: string = formik.values[id];
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
-        const file  = acceptedFiles[0];
+        const file = acceptedFiles[0];
 
         ImageService.save(file)
-            .then(({data: {id: savedImageId}}) => {
-                formik.setFieldValue(id, savedImageId)
+            .then(({ data: { id: savedImageId } }) => {
+                formik.setFieldValue(id, savedImageId);
             });
-    }, []);
+    }, [formik, id]);
 
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     return (
-        <div {...getRootProps()} style={{
-            border: '1px dashed black',
-            width: 200,
-            height: 250,
-            backgroundColor: "lightgray",
-            position: 'relative',
-        }}>
-            <input {...getInputProps()} />
+        <div
+            {...getRootProps()}
+            style={{
+                border: '1px solid #d4af37',
+                width: 200,
+                height: 250,
+                backgroundColor: 'transparent',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden', 
+            }}
+        >
+            <input {...getInputProps()} style={{ display: 'none' }} />
             {
-                isDragActive && image?
+                isDragActive ?
                     <p>Genau so!</p> :
-                    <p>Platzieren Sie ihr Bild hier</p>
+                    <AddPhotoAlternateIcon style={{ marginTop:"50%",marginLeft:"80px",fontSize: '40px', color: "#d4af37" }} />
             }
             {image && (
                 <img
@@ -46,12 +54,12 @@ const AbstractCardImgDrop = ({ id, formik }: AbstractDropDownParams) => {
                         position: 'absolute',
                         top: 0,
                         left: 0,
+                       
                     }}
                 />
             )}
         </div>
     );
 };
-
 
 export default AbstractCardImgDrop;
