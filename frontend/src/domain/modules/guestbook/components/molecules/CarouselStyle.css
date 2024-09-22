@@ -65,7 +65,7 @@ a {
 	color: #D4AF37;
 	display: block;
 }
-svg {
+.absolute-svg {
 	position: absolute;
 	top: 0;
 	left: 0;

@@ -30,37 +30,36 @@ const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
                         ...params.inputProps,
                        
                     }}
-                    
-     sx={{
-        "& .MuiOutlinedInput-root": {
-          color: "#000",
-          fontFamily: "Arial",
-          
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#5c5c5c",
-           
-          },
-          "&.Mui-focused": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#D4AF37",
-              
-            },
-          },
-          "&:hover:not(.Mui-focused)": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "black",
-            },
-          },
-        },
-        "& .MuiInputLabel-outlined": {
-          color: "#393635",
-         
-          "&.Mui-focused": {
-            color: "#D4AF37",
-            
-          },
-        },
-      }}
+                    sx={{
+                        "& .MuiOutlinedInput-root": {
+                          color: "#000",
+                          fontFamily: "Arial",
+                          
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#5c5c5c",
+                          
+                          },
+                          "&.Mui-focused": {
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#D4AF37",
+                              
+                            },
+                          },
+                          "&:hover:not(.Mui-focused)": {
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "black",
+                            },
+                          },
+                        },
+                        "& .MuiInputLabel-outlined": {
+                          color: "#393635",
+                        
+                          "&.Mui-focused": {
+                            color: "#D4AF37",
+                            
+                          },
+                        },
+                    }}
                 />
             )}
             onChange={handleOnChange}

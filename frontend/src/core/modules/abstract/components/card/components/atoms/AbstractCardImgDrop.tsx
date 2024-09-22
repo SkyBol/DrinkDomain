@@ -41,7 +41,7 @@ const AbstractCardImgDrop = ({ id, formik }: AbstractDropDownParams) => {
             {
                 isDragActive ?
                     <p>Genau so!</p> :
-                    <AddPhotoAlternateIcon style={{ marginTop:"50%",marginLeft:"80px",fontSize: '40px', color: "#d4af37" }} />
+                    <AddPhotoAlternateIcon className='absolute-svg' style={{ marginTop:"50%",marginLeft:"80px",fontSize: '40px', color: "#d4af37" }} />
             }
             {image && (
                 <img
