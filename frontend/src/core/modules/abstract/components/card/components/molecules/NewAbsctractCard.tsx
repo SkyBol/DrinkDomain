@@ -4,6 +4,7 @@ import styles from "./AbstractCard.module.css";
 import Bottle from "../../../../../../../domain/modules/bootle/models/Bottle.model";
 import {  useNavigate } from "react-router-dom";
 import ImageService from "../../../../../../../domain/modules/bootle/services/ImageService";
+import AbstractCardTag from "../atoms/AbstractCardTag";
 
 interface AbstractCardProps {
     handleEdit: (id: string) => void;
@@ -54,13 +55,13 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
 
                     <div className={styles.productImage}>
                         <img src={ImageService.imageUrl(bottle.img_id)} alt="product image" />
-                    </div>
-                    {bottle.tags &&
-                    <div>{bottle.tags[0]}</div>}
+                    </div>                
+                   
                 </div>
             </div>
 
             <div className={styles.productSpecifications}>
+            <AbstractCardTag tags={bottle.tags}/>
                 <h1>Beschreibung</h1>
                 <p>
                     {bottle.description}
