@@ -1,6 +1,7 @@
 package com.example.demo.domain.user;
 
 import com.example.demo.core.generic.AbstractEntity;
+import com.example.demo.core.generic.filter.IgnoreFilter;
 import com.example.demo.domain.role.Role;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,6 +35,7 @@ public class User extends AbstractEntity {
   @Column(name = "email", unique = true, nullable = false)
   private String email;
 
+  @IgnoreFilter
   @Column(name = "password")
   private String password;
 

@@ -31,7 +31,7 @@ public class Cocktail extends AbstractEntity {
     @Column(name = "alcoholic")
     private Boolean alcoholic;
 
-    @Column(name = "instructions")
+    @Column(name = "instructions", length = 10000)
     private String instructions;
 
     @ManyToMany(fetch = FetchType.EAGER)

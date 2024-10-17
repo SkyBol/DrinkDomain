@@ -1,13 +1,13 @@
 package com.example.demo.core.generic;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.util.*;
 
+import com.example.demo.core.generic.filter.AbstractSpecifications;
+import com.example.demo.core.generic.filter.DynamicFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 @AllArgsConstructor
 public abstract class AbstractServiceImpl<T extends AbstractEntity> implements AbstractService<T> {
@@ -40,13 +40,38 @@ public abstract class AbstractServiceImpl<T extends AbstractEntity> implements A
 
   @Override
   public List<T> findAll() {
-    return repository.findAll();
+    return findAll(null, null);
   }
 
   @Override
   public List<T> findAll(Pageable pageable) {
-    Page<T> pagedResult = repository.findAll(pageable);
-    return pagedResult.hasContent() ? pagedResult.getContent() : new ArrayList<>();
+    return findAll(null, pageable);
+  }
+
+  @Override
+  public List<T> findAll(DynamicFilter filter) {
+    return findAll(filter, null);
+  }
+
+  @Override
+  public List<T> findAll(Map<String, String> filter, Pageable pageable) {
+    DynamicFilter dynamicFilter = new DynamicFilter();
+    if (filter != null && !filter.isEmpty()) {
+      dynamicFilter.putAll(filter);
+    }
+    return findAll(dynamicFilter, pageable);
+  }
+
+  @Override
+  public List<T> findAll(DynamicFilter filter, Pageable pageable) {
+    Specification<T> specification = AbstractSpecifications.filter(filter);
+
+    if (pageable == null) {
+      return repository.findAll(specification);
+    } else {
+      Page<T> pagedResult = repository.findAll(specification, pageable);
+      return pagedResult.hasContent() ? pagedResult.getContent() : new ArrayList<>();
+    }
   }
 
   @Override

@@ -1,24 +1,20 @@
 package com.example.demo.domain.user;
 
+import com.example.demo.core.generic.filter.DynamicFilter;
 import com.example.demo.domain.user.dto.UserDTO;
 import com.example.demo.domain.user.dto.UserMapper;
 import com.example.demo.domain.user.dto.UserRegisterDTO;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
@@ -41,8 +37,11 @@ public class UserController {
   }
 
   @GetMapping({"", "/"})
-  public ResponseEntity<List<UserDTO>> retrieveAll() {
-    List<User> users = userService.findAll();
+  public ResponseEntity<List<UserDTO>> retrieveAll(
+          @RequestParam(required = false) Map<String, String> filter,
+          Pageable pageable
+  ) {
+    List<User> users = userService.findAll(filter, pageable);
     return new ResponseEntity<>(userMapper.toDTOs(users), HttpStatus.OK);
   }
 

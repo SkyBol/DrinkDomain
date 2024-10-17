@@ -10,6 +10,7 @@ services:
       - postgres
     environment:
       - POSTGRES_URL=postgres
+      - POSTGRES_PORT=5432
 
   postgres:
     image: postgres:15
