@@ -1,4 +1,4 @@
-import { defaultReview, Review } from "../../review/models/ReviewEntry.model";
+import { defaultSingleBottleReview, SingleBottleReview } from "../../review/models/ReviewEntry.model";
 
 export type GuestbookEntry = {
     id: string;
@@ -9,7 +9,7 @@ export type GuestbookEntry = {
     create_date: Date;
 }
 
-export type GuestbookEntryForm = GuestbookEntry & Review;
+export type GuestbookEntryForm = GuestbookEntry & SingleBottleReview;
 
 
 export const defaultGuestbookEntry: GuestbookEntry = {
@@ -23,7 +23,7 @@ export const defaultGuestbookEntry: GuestbookEntry = {
 
 export const defaulGuestbookEntryForm: GuestbookEntryForm = {
     ...defaultGuestbookEntry,
-    ...defaultReview,
+    ...defaultSingleBottleReview,
 }
 
 export default GuestbookEntry;

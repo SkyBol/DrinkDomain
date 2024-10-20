@@ -4,6 +4,7 @@ import com.example.demo.cocktail_db.category.Category;
 import com.example.demo.cocktail_db.ingredient.Ingredient;
 import com.example.demo.core.generic.AbstractEntity;
 import com.example.demo.domain.storage.Storage;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,5 +41,6 @@ public class Cocktail extends AbstractEntity {
     private Set<Category> category;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cocktails")
+    @JsonManagedReference
     private Set<Ingredient> ingredients;
 }

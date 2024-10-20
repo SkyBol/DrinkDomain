@@ -1,19 +1,19 @@
 import React from "react";
 import { Button } from "@mui/material";
 import styles from "./AbstractCard.module.css"; 
-import Bottle from "../../../../../../../domain/modules/bootle/models/Bottle.model";
 import {  useNavigate } from "react-router-dom";
 import ImageService from "../../../../../../../domain/modules/bootle/services/ImageService";
 import AbstractCardTag from "../atoms/AbstractCardTag";
+import Cocktail from "../../../../../../../domain/modules/cocktail/models/Cocktail.model";
 
-interface AbstractCardProps {
+interface CocktailAbstractCardProps {
     handleEdit: (id: string) => void;
     handleDelete: (id: string) => void;
     id: string;
-    bottle: Bottle;
+    cocktail: Cocktail;
 }
 
-const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete, id, bottle }) => {
+const CocktailAbstractCard: React.FC<CocktailAbstractCardProps> = ({ handleEdit, handleDelete, id, cocktail }) => {
     const navigate = useNavigate();
 
     return (
@@ -41,61 +41,23 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
                 <div className={styles.productinfo}>
                     <div className={styles.grouptext}>
                         <h3>Name</h3>
-                        <p>{bottle.name}</p>
+                        <p>{cocktail.name}</p>
                     </div>
                     <div className={styles.grouptext}>
-                        <h3>Sorte</h3>
-                        <p>{bottle.type}</p>
+                        <h3>Glas</h3>
+                        <p>{cocktail.glass}</p>
                     </div>
                     <div className={styles.grouptext}>
-                        <h3>Land</h3>
-                        <img src={`https://flagcdn.com/w20/${bottle.country?.toLowerCase()}.png`} alt={"picture of the bottle"} style={{width: 30, height: 20 ,paddingRight:5}}/>
-                    </div>
-
-                    <div className={styles.productImage}>
-                        <img src={ImageService.imageUrl(bottle.img_id)} alt="product image" />
-                    </div>                
-                   
+                        <h3>{cocktail.alcoholic ? "Mit" : "Ohne"} Alkohol</h3>
+                    </div>              
                 </div>
             </div>
 
             <div className={styles.productSpecifications}>
-            <AbstractCardTag tags={bottle.tags}/>
-                <h1>Beschreibung</h1>
+                <h1>Instructions (EN)</h1>
                 <p>
-                    {bottle.description}
+                    {cocktail.instructions}
                 </p>
-
-                <div className={styles.productFeatures}>
-                    <div className={styles.feature}>
-                        <div className={styles.featureIcon}></div>
-                        <div className={styles.featureText}>
-                            <p><strong>Cocktail 1</strong></p>
-                            <p>Test</p>
-                        </div>
-                    </div>
-                    <div className={styles.feature}>
-                        <div className={styles.featureIcon}></div>
-                        <div className={styles.featureText}>
-                            <p><strong>Cocktail 2</strong></p>
-                            <p>Test</p>
-                        </div>
-                    </div>
-                    <div className={styles.feature}>
-                        <div className={styles.featureIcon}></div>
-                        <div className={styles.featureText}>
-                            <p><strong>Cocktail 3</strong></p>
-                            <p>Test</p>
-                        </div>
-                    </div>
-                    <div className={styles.feature}>
-                        <div className={styles.featureIcon}></div>
-                        <div className={styles.featureText}>
-                            <p><strong>Cocktail 4</strong></p>
-                            <p>Test</p>
-                        </div>
-                    </div>
-                </div>
                 <div className={styles.cardActions}>
                     <Button
                         size="small"
@@ -120,4 +82,4 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
     );
 };
 
-export default NewAbstractCard;
+export default CocktailAbstractCard;

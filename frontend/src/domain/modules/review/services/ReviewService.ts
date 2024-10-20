@@ -1,6 +1,6 @@
 import AbstractService from "../../../../core/modules/abstract/services/AbstractService";
 import Review from "../models/ReviewEntry.model";
 
-const GuestbookService = new AbstractService<Review>("/call/guestbook/");
+const ReviewService = new AbstractService<Review>("/call/review/");
 
-export default GuestbookService;
+export default ReviewService;

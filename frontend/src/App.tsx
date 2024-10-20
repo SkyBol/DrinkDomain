@@ -5,10 +5,10 @@ import SearchAppBar from "./core/modules/Navbar/Navbar.tsx";
 function App() {
   return (
     <ActiveUserContextProvider>
-        <SearchAppBar/>
+      <SearchAppBar/>
       <Router />
     </ActiveUserContextProvider>
   )
 }
 
-export default App
+export default App;

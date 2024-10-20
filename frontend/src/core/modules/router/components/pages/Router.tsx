@@ -10,6 +10,9 @@ import BottleTable from "../../../../../domain/modules/bootle/components/pages/B
 import BottleDetailPage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottleDetailPage.tsx";
 import GuestBookEntryPage from '../../../../../domain/modules/guestbook/components/pages/GuestBookEntryPage.tsx';
 import GuestBook from '../../../../../domain/modules/guestbook/components/pages/GuestBook.tsx';
+import CocktailTable from '../../../../../domain/modules/cocktail/components/pages/CocktailTable/CocktailTable.tsx';
+import CocktailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailPage.tsx';
+import CocktailDetailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailDetailPage.tsx';
 
 const Router = () => {
     return (
@@ -37,6 +40,9 @@ const Router = () => {
 
             <Route path={'/guestBook'} element={<GuestBook/>} />
             <Route path={'/guestBook/add'} element={<GuestBookEntryPage/>} />
+            <Route path={'/cocktail'} element={<CocktailTable />} />
+            <Route path={'/cocktail/:cocktailId'} element={<CocktailPage />} />
+            <Route path={'/cocktail/detail/:cocktailId'} element={<CocktailDetailPage />} />
 
             <Route path='*' element={<div>Not Found</div>} />
         </Routes>

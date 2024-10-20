@@ -5,30 +5,33 @@ import BottleType from "../../../../../../../domain/modules/bootle/models/Bottle
 type AbstractTypeParams = {
     id: string;
     formik?: any;
+    options?: any[];
+    getOptionLabel?: (option: any) => string;
 }
 
-const AbstractFormType = ({ id, formik }: AbstractTypeParams) => {
+const AbstractFormType = ({ id, formik, options, getOptionLabel }: AbstractTypeParams) => {
     const handleOnChange = (event: React.ChangeEvent<{}>, value: string | null) => {
         formik.setFieldValue(id, value || '');
     };
 
-
     const initialValue = formik.values[id];
+
+    const autocompleteOptions = options ? options : Object.values(BottleType);
+    const autocompleteGetOptionLabel = getOptionLabel ? getOptionLabel : (option: any) => option;
 
     return (
         <Autocomplete
             id={id}
-            options={Object.values(BottleType)} 
+            options={autocompleteOptions}
             autoHighlight
             value={initialValue}
-            getOptionLabel={(option) => option}
+            getOptionLabel={autocompleteGetOptionLabel}
             renderInput={(params) => (
                 <TextField
                     {...params}
                     label={initialValue ? initialValue : "Choose a type"}
                     inputProps={{
                         ...params.inputProps,
-                       
                     }}
                     sx={{
                         "& .MuiOutlinedInput-root": {
