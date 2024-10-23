@@ -1,5 +1,10 @@
 body {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     padding-top: 50px; /** Needed for the NavBar to Push Items down **/
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display: block;
+    background-color: #535062;
 }

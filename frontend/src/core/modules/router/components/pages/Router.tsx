@@ -18,11 +18,11 @@ const Router = () => {
     return (
         <Routes>
             {/* Core Routes */}
-            <Route path={'/users'}>
+            {/* <Route path={'/users'}>
                 <Route path={'/users/add'} element={<UserPage />} />
                 <Route path={'/users/:userId'} element={<UserPage />} />
                 <Route path={'*'} element={<UserTable />} />
-            </Route>
+            </Route> */}
 
             <Route path={'/login'} element={<Login/>} />
 

@@ -12,12 +12,8 @@ export const GuestBook = () => {
 
     useEffect(() => {
         GuestbookService.getAll()
-            .then((res) => {
-                setGuestbookEntry(res.data);
-            })
-            .catch((error) => {
-                console.error("Error fetching guestbook details:", error);
-            });
+            .then((res) => setGuestbookEntry(res.data) )
+            .catch((error) => console.error("Error fetching guestbook details:", error));
     }, [guestbookId]);
 
     const formatDate = (date?: Date) => {

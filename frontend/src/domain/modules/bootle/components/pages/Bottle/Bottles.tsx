@@ -7,7 +7,7 @@ const Bottles = () => {
             <BottleCard
                 bottle={{
                     id: "1",
-                    img:"bottle.png",
+                    img_id:"bottle.png",
                     name: "test-title",
                     type: "beer",
                     description: "test-description",
@@ -15,8 +15,6 @@ const Bottles = () => {
                     amount: 1,
                     rating: 3.5,
                 }}
-                handleEdit={() => {}}
-                handleDelete={() => {}}
                 />
         </div>
     )

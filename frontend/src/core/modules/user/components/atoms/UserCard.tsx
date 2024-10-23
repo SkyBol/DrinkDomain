@@ -14,9 +14,8 @@ const UserCard = ({ user, handleEdit, handleDelete } : UserCardProps) => {
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 id={user.id}
-            >
-                {user.firstName} {user.lastName} {user.email}
-            </AbstractCard>
+                bottle={null}
+            />
         </div>
     )
 }

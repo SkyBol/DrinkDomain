@@ -4,10 +4,12 @@ import BottleService from "../../../services/BottleService.ts";
 import BottleList from "../../molecules/BottleList/BottleList.tsx";
 import ReviewService from "../../../../review/services/ReviewService.ts";
 import Review from "../../../../review/models/ReviewEntry.model.ts";
+import WishlistPopup from "../../../../wishlist/components/atoms/Wishlist/Wishlist.tsx";
+import { FactCheck } from "@mui/icons-material";
 
 const BottleTable = () => {
-
-    const [bottles, setBottles] = useState<Bottle[]>([])
+    const [open, setOpen] = useState<boolean>(false);
+    const [bottles, setBottles] = useState<Bottle[]>([]);
 
     useEffect(() => {
         const getBottles = async () => {
@@ -33,10 +35,28 @@ const BottleTable = () => {
 
 
     return (
-        <div style={{padding:15}}>
-            <BottleList
-                bottles={bottles}
-            />
+        <div style={{ padding:15 }}>
+            <div
+                onClick={() => setOpen(true)}
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    alignContent: "center",
+                    cursor: "pointer",
+                    paddingLeft: "16px",
+                }}
+            >
+                <FactCheck/>
+                <p style={{paddingLeft: "5px"}}>
+                    Wunschliste
+                </p>
+            </div>
+            <WishlistPopup open={open} close={() => setOpen(false)} />
+            <div style={{ margin: "16px" }}>
+                <BottleList
+                    bottles={bottles}
+                />
+            </div>
         </div>
     )
 }

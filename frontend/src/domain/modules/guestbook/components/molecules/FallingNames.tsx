@@ -54,14 +54,14 @@ const Wrapper = styled('div')(() => ({
 const FallingNames = ({children, childrenInBack} : FallingNamesProps) => {
     return (
         <Wrapper>
-            {
+            {/* {
                 names.map((ele) => 
                     <FallingName
                         entry={ele}
                         properties={{animationDelay: Math.random() * 5}}
                     />
                 )
-            }
+            } */}
             { children }
         </Wrapper>
     );
