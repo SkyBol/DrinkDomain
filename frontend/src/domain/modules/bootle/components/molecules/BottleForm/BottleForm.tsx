@@ -57,7 +57,7 @@ const BottleForm = ({ bottle, submitActionHandler }: BottleFormProps) => {
                     </div>
 
                     <div className={styles.formField}>
-                        <AbstractFormNumericField id="rating" formik={formik} />
+                        <AbstractFormNumericField id="alcohol" formik={formik} />
                     </div>
                 </div>
 

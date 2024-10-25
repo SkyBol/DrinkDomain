@@ -8,7 +8,7 @@ type Bottle = {
     tags ?:string[];
     country ?: string;
     amount: number;
-    rating: number;
+    alcohol: string;
 }
 
 export const defaultBottle : Bottle = {
@@ -20,8 +20,7 @@ export const defaultBottle : Bottle = {
     tags: [],
     country: "",
     amount: 0,
-    rating: 0,
-
+    alcohol: "",
 }
 
 export default Bottle;
