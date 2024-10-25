@@ -51,6 +51,10 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
                         <h3>Land</h3>
                         <img src={`https://flagcdn.com/w20/${bottle.country?.toLowerCase()}.png`} alt={"picture of the bottle"} style={{width: 30, height: 20 ,paddingRight:5}}/>
                     </div>
+                    <div className={styles.grouptext}>
+                        <h3>Alkohol Prozent</h3>
+                        <p>{bottle.alcohol}%</p>
+                    </div>
 
                     <div className={styles.productImage}>
                         <img src={ImageService.imageUrl(bottle.img_id)} alt="product image" />

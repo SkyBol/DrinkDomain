@@ -14,6 +14,7 @@ const Bottles = () => {
                     country: "sz",
                     amount: 1,
                     rating: 3.5,
+                    alcohol: "",
                 }}
                 />
         </div>

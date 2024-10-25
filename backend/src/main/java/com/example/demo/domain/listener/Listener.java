@@ -17,6 +17,6 @@ public class Listener extends AbstractEntity {
     @Column(name = "api-key")
     private String apiKey;
 
-    @Column(length = 1024)
+    @Column(length = 10240)
     private String value;
 }

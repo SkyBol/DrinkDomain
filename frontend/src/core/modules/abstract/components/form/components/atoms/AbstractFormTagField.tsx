@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormikContext, FormikProps } from 'formik';
-import { TextField, Button, Chip, Typography } from '@mui/material';
+import { TextField, Button, Chip, Typography, Autocomplete } from '@mui/material';
+import BottleService from '../../../../../../../domain/modules/bootle/services/BottleService';
+import Bottle from '../../../../../../../domain/modules/bootle/models/Bottle.model';
 
 interface AbstractFormTagFieldProps {
     id: string;  
@@ -12,13 +14,30 @@ const AbstractFormTagField = ({ id, formik }: AbstractFormTagFieldProps) => {
     const context = formik || useFormikContext<any>();
     const { values, setFieldValue } = context;
 
+    const [availableTags, setAvailableTags] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
 
+    useEffect(() => {
+        const getBottles = async () => {
+            const allBottles: Bottle[] = (await BottleService.getAll()).data;
+            const tags = allBottles
+                .map((bottle) => bottle.tags)
+                .filter((tags) => !!tags)
+                .flat();
+            
+            const withoutDuplicates = [...new Set(tags)];
+
+            if (withoutDuplicates)
+                setAvailableTags(withoutDuplicates.sort());
+        }
+
+        getBottles();
+    }, []);
    
     const tags: string[] = values[id] || [];
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value);
+    const handleInputChange = (_event: React.ChangeEvent<HTMLInputElement>, value: string) => {
+        setInputValue(value);
     };
 
     const handleAddTag = () => {
@@ -35,37 +54,45 @@ const AbstractFormTagField = ({ id, formik }: AbstractFormTagFieldProps) => {
     return (
         <div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <TextField
-                    label="Enter Tag"
-                    variant="outlined"
+                <Autocomplete
+                    options={availableTags}
+                    style={{width: "100%"}}
                     value={inputValue}
                     onChange={handleInputChange}
-                    style={{ marginBottom: "10px", flex: 1 }}
-                    sx={{
-                        "& .MuiOutlinedInput-root": {
-                            color: "#000",
-                            fontFamily: "Arial",
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#5c5c5c",
-                            },
-                            "&.Mui-focused": {
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "#D4AF37",
+                    onInputChange={handleInputChange}
+                    renderInput={(props) =>
+                        <TextField
+                            {...props}
+                            label="Enter Tag"
+                            variant="outlined"
+                            style={{ marginBottom: "10px", flex: 1, width: "100%" }}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    color: "#000",
+                                    fontFamily: "Arial",
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "#5c5c5c",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "#D4AF37",
+                                        },
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "black",
+                                        },
+                                    },
                                 },
-                            },
-                            "&:hover:not(.Mui-focused)": {
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "black",
+                                "& .MuiInputLabel-outlined": {
+                                    color: "#393635",
+                                    "&.Mui-focused": {
+                                        color: "#D4AF37",
+                                    },
                                 },
-                            },
-                        },
-                        "& .MuiInputLabel-outlined": {
-                            color: "#393635",
-                            "&.Mui-focused": {
-                                color: "#D4AF37",
-                            },
-                        },
-                    }}
+                            }}
+                        />
+                    }
                 />
                 <Button
                     variant="contained"

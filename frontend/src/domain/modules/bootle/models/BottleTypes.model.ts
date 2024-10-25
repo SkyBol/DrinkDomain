@@ -23,7 +23,7 @@ enum BottleType {
     Spezial="Spezial",
     Softgetraenk="Softgetraenk",
     Alkoholfrei="Alkoholfrei",
-    Obstbrand="Obstbrand",
+    Sirup="Sirup",
 }
 
 export default BottleType;
