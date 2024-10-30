@@ -89,7 +89,7 @@ const setVideo = (bottle:Bottle)=>{
             case BottleType.Mezcal:
                 setVideoBackground(mezcal)
                 break;
-            case BottleType.Obstbrand:
+            case BottleType.Sirup: // TODO: new Video Background
                 setVideoBackground(obst)
                 break;
             case BottleType.Ouzo:

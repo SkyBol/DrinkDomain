@@ -11,4 +11,6 @@ public interface StorageService {
     ByteArrayResource getFileAsResource(UUID storageId);
 
     void deleteFile(UUID fileId);
+
+    ByteArrayResource getImageAsResourceAndResize(UUID storageId, int width);
 }

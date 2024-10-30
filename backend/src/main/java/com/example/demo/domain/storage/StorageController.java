@@ -30,6 +30,15 @@ public class StorageController {
                 .body(byteArrayResource);
     }
 
+    @GetMapping("/{fileId}/resize")
+    public ResponseEntity<Resource> loadImageAsResourceAndResize(@PathVariable UUID fileId, @RequestParam int width) {
+        ByteArrayResource byteArrayResource = storageService.getFileAsResource(fileId);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .contentLength(byteArrayResource.contentLength())
+                .body(byteArrayResource);
+    }
+
     @PostMapping({"", "/"})
     public ResponseEntity<Storage> handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         return ResponseEntity.ok(storageService.store(file));
