@@ -42,10 +42,10 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     return http.authorizeHttpRequests(requests -> requests
-                .requestMatchers(HttpMethod.POST, "/user/login", "/user/register").permitAll()
-                .requestMatchers(HttpMethod.GET, "/v3/api-docs","/v3/api-docs/swagger-config","/swagger-ui/*","/myapi/*/*","/myapi/*").permitAll()
-                .requestMatchers("/call/**").permitAll()
-                .anyRequest().permitAll())
+                .requestMatchers(HttpMethod.POST, "/user/login").permitAll() // "/user/register"
+                .requestMatchers(HttpMethod.GET, "/v3/api-docs","/v3/api-docs/swagger-config","/swagger-ui/*","/myapi/*/*","/myapi/*").authenticated()
+                .requestMatchers("/call/**").authenticated()
+                .anyRequest().authenticated())
             .addFilterAfter(new JWTAuthenticationFilter(new AntPathRequestMatcher("/user/login", "POST"),
                     authenticationManager(), jwtProperties), UsernamePasswordAuthenticationFilter.class)
             .addFilterAfter(new JWTAuthorizationFilter(userService, jwtProperties),

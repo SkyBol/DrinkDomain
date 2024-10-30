@@ -13,6 +13,7 @@ import GuestBook from '../../../../../domain/modules/guestbook/components/pages/
 import CocktailTable from '../../../../../domain/modules/cocktail/components/pages/CocktailTable/CocktailTable.tsx';
 import CocktailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailPage.tsx';
 import CocktailDetailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailDetailPage.tsx';
+import AutoLoginPage from '../../../user/components/pages/AutoLoginPage/AutoLoginPage.tsx';
 
 const Router = () => {
     return (
@@ -25,6 +26,7 @@ const Router = () => {
             </Route> */}
 
             <Route path={'/login'} element={<Login/>} />
+            <Route path={'/login/:code'} element={<AutoLoginPage />} />
 
 
             {/* Domain Routes */}
