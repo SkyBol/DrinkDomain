@@ -20,7 +20,7 @@ export const CocktailCard = ({cocktail}: CocktailCardProps) => {
     };
 
     const getImageUrl = () => {
-        if (cocktail.img_id.startsWith("http")) {
+        if (cocktail.img_id && cocktail.img_id.startsWith("http")) {
             return cocktail.img_id;
         }
 
