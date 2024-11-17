@@ -34,7 +34,7 @@ const CocktailDetailPage = () => {
     };
   
     return (
-        <div style={{ position: 'relative', zIndex: 2 }}>
+        <div>
             <div style={{
                 display: 'flex',
                 justifyContent: 'center',

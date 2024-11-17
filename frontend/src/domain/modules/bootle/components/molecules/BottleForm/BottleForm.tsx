@@ -11,7 +11,7 @@ import AbstractFormNumericField from "../../../../../../core/modules/abstract/co
 
 
 import styles from "./BottleForm.module.css";
-import AbstractFormTagField from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormTagField.tsx";
+import AbstractFormTagFieldBottle from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormTagFieldBottle.tsx";
 
 interface BottleFormProps {
     bottle: Bottle;
@@ -27,7 +27,7 @@ const BottleForm = ({ bottle, submitActionHandler }: BottleFormProps) => {
 
     return (
         <div className={styles.bottleFormPage}>
-            <h2 className={styles.title}>Welcome to the Bar</h2>
+            <h2 className={styles.title}>Add a Bottle</h2>
 
             <div className={styles.addBottleForm}/>
             <div className={styles.formContent}>
@@ -45,7 +45,7 @@ const BottleForm = ({ bottle, submitActionHandler }: BottleFormProps) => {
                     </div>
 
                     <div className={styles.formField}>
-                        <AbstractFormTagField id="tags" formik={formik} />
+                        <AbstractFormTagFieldBottle id="tags" formik={formik} />
                     </div>
 
                     <div className={styles.formField}>

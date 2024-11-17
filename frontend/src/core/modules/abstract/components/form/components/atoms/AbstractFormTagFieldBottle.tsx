@@ -10,7 +10,7 @@ interface AbstractFormTagFieldProps {
 }
 
 const AbstractFormTagField = ({ id, formik }: AbstractFormTagFieldProps) => {
-    
+
     const context = formik || useFormikContext<any>();
     const { values, setFieldValue } = context;
 

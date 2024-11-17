@@ -7,7 +7,8 @@ export type Cocktail = {
     glass: string;
     alcoholic: boolean;
     instructions: string;
-    category: string[];
+    category: {name: string}[];
+    ingredients: Ingredient[];
 }
 
 export default Cocktail;
@@ -18,4 +19,15 @@ export type Ingredient = {
     bottles: Bottle | null;
     bottleStringAlternative: string | null;
     amount: string;
+}
+
+export const defaultCocktail : Cocktail = {
+    id: "",
+    name: "",
+    img_id: "",
+    glass: "",
+    alcoholic: false,
+    instructions: "",
+    category: [],
+    ingredients: [],
 }
