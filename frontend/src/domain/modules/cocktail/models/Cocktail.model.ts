@@ -16,7 +16,7 @@ export default Cocktail;
 
 export type Ingredient = {
     id: string;
-    bottles: Bottle | null;
+    bottle: Bottle | null;
     bottleStringAlternative: string | null;
     amount: string;
 }

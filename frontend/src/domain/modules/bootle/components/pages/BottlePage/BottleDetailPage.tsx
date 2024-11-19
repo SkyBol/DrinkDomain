@@ -54,8 +54,8 @@ const BottleDetailPage = () => {
                     <NewAbstractCard
                             handleDelete={handleDelete}
                             handleEdit={handleEdit}
-                            id={bottle.id} 
-                            bottle={bottle}                      
+                            id={bottle.id}
+                            bottle={bottle}
                     />
                 ) : (
                     <Typography variant="body1">No bottle found with ID {bottleId}</Typography>

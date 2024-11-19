@@ -7,6 +7,7 @@ import AbstractFormCheckbox from "../../../../../../core/modules/abstract/compon
 import AbstractFormButton from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormButton";
 import AbstractFormTextArea from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormBigTextArea";
 import AbstractFormTagFieldCocktail from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstractFormTagFieldCocktail";
+import AbstractFormListIngredient from "../../../../../../core/modules/abstract/components/form/components/atoms/AbstarctFormListIngredient";
 
 
 interface CocktailFormProps {
@@ -46,6 +47,10 @@ const CocktailForm = ({ cocktail, submitActionHandler }: CocktailFormProps) => {
 
                     <div className={styles.formField}>
                         <AbstractFormTagFieldCocktail id="category" formik={formik} />
+                    </div>
+
+                    <div className={styles.formField}>
+                        <AbstractFormListIngredient id="ingredients" formik={formik} />
                     </div>
                 </div>
 
