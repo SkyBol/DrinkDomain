@@ -21,7 +21,7 @@
 .navItem {
   display: flex;
   flex-direction: row-reverse;
-  font-size: 0.8999rem;
+  font-size: 1rem;
   line-height: 1rem;
   align-items: center;
   min-width: 80px;

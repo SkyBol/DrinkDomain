@@ -10,13 +10,13 @@ interface LoginFormProps {
 const LoginForm = ({ formik } : LoginFormProps) => {
     return (
         <AbstractForm formik={formik}>
-            <AbstractFormTextField
+            {/* <AbstractFormTextField
                 id='email'
                 placeholder='Enter username'
                 fullWidth
                 required
                 autoFocus
-            />
+            /> */}
             <AbstractFormTextField
                 id='password'
                 placeholder='Enter password'

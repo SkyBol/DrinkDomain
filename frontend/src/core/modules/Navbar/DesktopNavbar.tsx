@@ -11,7 +11,7 @@ interface DesktopNavbarProps {
 const DesktopNavbar: React.FC<DesktopNavbarProps> = ({items, handleClick, activeTab}) => {
     return (
         <nav className={styles.menu}>
-            <img src={logo} style={{width:"3vw", minWidth:"40px"}} alt="Logo"/>
+            <img src={logo} style={{width:"3vw", minWidth:"60px"}} alt="Logo"/>
             {
                 items.map((navItem) => (
                     <span
