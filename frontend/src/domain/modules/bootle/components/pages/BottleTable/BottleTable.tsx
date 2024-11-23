@@ -6,23 +6,12 @@ import ReviewService from "../../../../review/services/ReviewService.ts";
 import Review from "../../../../review/models/ReviewEntry.model.ts";
 import WishlistPopup from "../../../../wishlist/components/atoms/Wishlist/Wishlist.tsx";
 import { FactCheck } from "@mui/icons-material";
-import { Autocomplete, TextField } from "@mui/material";
-import BottleType from "../../../models/BottleTypes.model.ts";
+import BottleFilter from "../../molecules/BottleFilter/BottleFilter.tsx";
 
-interface Filter {
-    name: string;
-    type: string;
-}
-
-const startFilter: Filter = {
-    name: "",
-    type: "",
-}
 
 const BottleTable = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [bottles, setBottles] = useState<Bottle[]>([]);
-    const [filter, setFilter] = useState<Filter>(startFilter);
     const [filteredBottles, setFilteredBottles] = useState<Bottle[]>([]);
 
     useEffect(() => {
@@ -47,26 +36,6 @@ const BottleTable = () => {
         getBottles();
     }, []);
 
-    useEffect(() => {
-        console.log(bottles.length, filter)
-        setFilteredBottles(
-            bottles
-                .filter((bottle) => {
-                    if (filter.name && filter.name.length > 0) {
-                        return bottle.name.toLocaleLowerCase().includes(filter.name.toLocaleLowerCase());
-                    }
-                    return true;
-                })
-                .filter((bottle) => {
-                    if (filter.type && filter.type.length > 0) {
-                        return bottle.type === filter.type;
-                    }
-                    return true;
-                })
-        )
-    }, [filter, bottles]);
-
-
     return (
         <div style={{ padding:15 }}>
             <div
@@ -84,26 +53,10 @@ const BottleTable = () => {
                     Wunschliste
                 </p>
             </div>
-            <div>
-                <TextField
-                    onChange={(event) =>
-                        setFilter({
-                            ...filter,
-                            name: event.target.value,
-                        })
-                    }
-                />
-                <Autocomplete
-                    renderInput={(params) => <TextField {...params} label="Type" />}
-                    options={Object.values(BottleType)}
-                    onChange={(_e, value) => 
-                        setFilter({
-                            ...filter,
-                            type: value,
-                        })
-                    }
-                />
-            </div>
+            <BottleFilter
+                bottles={bottles}
+                setFilteredBottles={setFilteredBottles}
+            />
             <WishlistPopup open={open} close={() => setOpen(false)} />
             <div style={{ margin: "16px" }}>
                 <BottleList

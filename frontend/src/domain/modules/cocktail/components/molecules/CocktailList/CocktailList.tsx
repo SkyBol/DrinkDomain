@@ -1,6 +1,6 @@
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import Cocktail from "../../models/Cocktail.model";
-import CocktailCard from "../atoms/CocktailCard";
+import Cocktail from "../../../models/Cocktail.model";
+import CocktailCard from "../../atoms/CocktailCard";
 
 export interface CocktailListProps {
     cocktails: Cocktail[];
@@ -9,7 +9,7 @@ export interface CocktailListProps {
 export const CocktailList = ({cocktails}: CocktailListProps) => {
     const theme = useTheme();
     const isHandyView = useMediaQuery(theme.breakpoints.down('sm')); // adjust the breakpoint as needed
-  
+
     return (
         <Grid container spacing={2}>
             {cocktails.map((cocktail) => (

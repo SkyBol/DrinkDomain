@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Cocktail from "../../../models/Cocktail.model";
 import CocktailService from "../../../services/CocktailService";
-import CocktailList from "../../molecules/CocktailList";
+import CocktailList from "../../molecules/CocktailList/CocktailList";
 
 const CocktailTable = () => {
     const [cocktails, setCocktails] = useState<Cocktail[]>([])

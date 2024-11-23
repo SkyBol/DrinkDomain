@@ -7,6 +7,7 @@ import com.example.demo.domain.storage.util.Hasher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 import org.springframework.security.crypto.keygen.KeyGenerators;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -153,5 +155,15 @@ public class StorageServiceImpl extends AbstractServiceImpl<Storage> implements 
         }
 
         deleteById(storage.getId());
+    }
+
+    @Override
+    public ByteArrayResource getImageAsResourceAndResize(UUID storageId, int width) {
+        ByteArrayResource image = getFileAsResource(storageId);
+
+        // TODO: Compress Image by width
+        // float scale = newWidth / image.getWidth();
+
+        return image;
     }
 }

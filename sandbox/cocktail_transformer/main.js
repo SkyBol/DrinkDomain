@@ -23,7 +23,7 @@ const mappedJson = json.map((cocktail) => {
 
     newCocktail.id = uuidv4()
     newCocktail.name = cocktail.strDrink
-    newCocktail.img_id = null
+    newCocktail.img_id = cocktail.strDrinkThumb
     newCocktail.glass = cocktail.strGlass
     newCocktail.alcoholic = cocktail.strAlcoholic === "Alcoholic"
     newCocktail.instructions = cocktail.strInstructions

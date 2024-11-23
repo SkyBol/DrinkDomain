@@ -65,7 +65,7 @@ const CocktailAbstractCard: React.FC<CocktailAbstractCardProps> = ({ handleEdit,
                         variant="contained"
                         onClick={() => handleEdit(id)}
                     >
-                    Edit
+                        Edit
                     </Button>
                     <Button
                         size="small"
@@ -73,7 +73,7 @@ const CocktailAbstractCard: React.FC<CocktailAbstractCardProps> = ({ handleEdit,
                         variant="contained"
                         onClick={() => handleDelete(id)}
                     >
-                    Delete
+                        Delete
                     </Button>
                 </div>
             </div>

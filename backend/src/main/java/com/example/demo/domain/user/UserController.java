@@ -1,6 +1,5 @@
 package com.example.demo.domain.user;
 
-import com.example.demo.core.generic.filter.DynamicFilter;
 import com.example.demo.domain.user.dto.UserDTO;
 import com.example.demo.domain.user.dto.UserMapper;
 import com.example.demo.domain.user.dto.UserRegisterDTO;

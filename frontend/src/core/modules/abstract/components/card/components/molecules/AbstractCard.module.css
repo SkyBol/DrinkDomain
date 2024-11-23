@@ -58,23 +58,20 @@ body{
 
 
 .productinfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    min-height: 200px;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  min-height: 200px;
+  max-height: 350px;
 }
 
 .productImage {
-    position: absolute;
-   padding-left: 10vh;
-    width: 321px;
-    height: auto;
-   
-  
+  display: flex;
+  justify-content: center;
+  height: 100%;
 
-img{ width: 100%; height: auto}
+  img{}
 }
  
 

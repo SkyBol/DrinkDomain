@@ -19,47 +19,46 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
     return (
         <div className={styles.wrapper}>
             <div className={styles.overviewInfo}>
-                <div className={styles.actions}>
-                    <div className={styles.backbutton}>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={()=>navigate(-1)}
-                        >
-                            <path
-                                d="M1.02698 11.9929L5.26242 16.2426L6.67902 14.8308L4.85766 13.0033L22.9731 13.0012L22.9728 11.0012L4.85309 11.0033L6.6886 9.17398L5.27677 7.75739L1.02698 11.9929Z"
-                                fill="currentColor"
-                            />
-                        </svg>
-                    </div>
-                    <div></div>
-                </div>
-
                 <div className={styles.productinfo}>
-                    <div className={styles.grouptext}>
-                        <h3>Name</h3>
-                        <p>{bottle.name}</p>
-                    </div>
-                    <div className={styles.grouptext}>
-                        <h3>Sorte</h3>
-                        <p>{bottle.type}</p>
-                    </div>
-                    <div className={styles.grouptext}>
-                        <h3>Land</h3>
-                        <img src={`https://flagcdn.com/w20/${bottle.country?.toLowerCase()}.png`} alt={"picture of the bottle"} style={{width: 30, height: 20 ,paddingRight:5}}/>
-                    </div>
-                    <div className={styles.grouptext}>
-                        <h3>Alkohol Prozent</h3>
-                        <p>{bottle.alcohol}%</p>
+                    <div>
+                        <div className={styles.actions}>
+                            <div className={styles.backbutton}>
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    onClick={()=>navigate(-1)}
+                                >
+                                    <path
+                                        d="M1.02698 11.9929L5.26242 16.2426L6.67902 14.8308L4.85766 13.0033L22.9731 13.0012L22.9728 11.0012L4.85309 11.0033L6.6886 9.17398L5.27677 7.75739L1.02698 11.9929Z"
+                                        fill="currentColor"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                        <div className={styles.grouptext}>
+                            <h3>Name</h3>
+                            <p>{bottle.name}</p>
+                        </div>
+                        <div className={styles.grouptext}>
+                            <h3>Sorte</h3>
+                            <p>{bottle.type}</p>
+                        </div>
+                        <div className={styles.grouptext}>
+                            <h3>Land</h3>
+                            <img src={`https://flagcdn.com/w20/${bottle.country?.toLowerCase()}.png`} alt={"picture of the bottle"} style={{width: 30, height: 20 ,paddingRight:5}}/>
+                        </div>
+                        <div className={styles.grouptext}>
+                            <h3>Alkohol Prozent</h3>
+                            <p>{bottle.alcohol}%</p>
+                        </div>
                     </div>
 
                     <div className={styles.productImage}>
                         <img src={ImageService.imageUrl(bottle.img_id)} alt="product image" />
-                    </div>                
-                   
+                    </div>
                 </div>
             </div>
 

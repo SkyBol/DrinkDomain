@@ -15,9 +15,11 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
     const paperStyle = {
         padding: 20,
-        height: '70vh',
-        width: 280,
-        margin: '20px auto',
+        height: '50vh',
+        width: 400,
+        margin: '70px auto',
+        backgroundColor: "#0c121a",
+        color: "rgb(212, 175, 55)"
     };
     const navigate = useNavigate();
     const { login } = useContext(ActiveUserContext);
@@ -48,26 +50,17 @@ const Login = () => {
     return (
       <Grid>
         <Paper elevation={10} style={paperStyle}>
-          <Grid>
+          <Grid style={{marginBottom: "50px"}}>
             <h2>Sign In</h2>
-            <p>Default login:</p>
-            <p>email: admin@example.com</p>
-            <p>pw: 1234</p>
           </Grid>
 
           <LoginForm formik={formik} />
-
-          <Typography>
-            <Link href='#'>Forgot password ?</Link>
-          </Typography>
-          <Typography>
-            {' '}
-            Do you have an account ? <Link href='#'>Sign Up</Link>
-          </Typography>
+          <div style={{marginTop: "40px", backgroundColor: "#0c0d11", padding: "20px", borderRadius: "10px", width: "100%"}}>
+            Bitte verwende das von Jan bereitgestellte Passwort, um dich einzuloggen. Da keine deiner Daten gespeichert werden, möchten wir dich bitten, freundlich und respektvoll zu agieren. Vielen Dank für dein Verständnis!
+          </div>
         </Paper>
       </Grid>
     );
   };
-  
-  export default Login;
-  
+
+export default Login;
