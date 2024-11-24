@@ -7,6 +7,7 @@ import AbstractCardType from "../../../../../../core/modules/abstract/components
 import { useNavigate } from "react-router-dom";
 import BottleType from "../../../models/BottleTypes.model.ts";
 import ImageService from "../../../services/ImageService.ts";
+import AbstractCardTitleDynamic from "../../../../../../core/modules/abstract/components/card/components/atoms/AbstractCardTitleDynamic.tsx";
 
 interface BottleCardProps {
     bottle: Bottle;
@@ -29,18 +30,22 @@ const BottleCard: React.FC<BottleCardProps> = ({ bottle }) => {
                 <Box sx={{backgroundImage: "linear-gradient(176deg, rgb(114, 88, 11), rgb(121, 99, 26))"}}>
                     <CardMedia
                         component="img"
-                        height="240"
-                        width="140"
+                        height="240px"
+                        width="140px"
                         image={ImageService.imageUrl(bottle.img_id)}
                         alt="default bottle"
                     />
                 </Box>
                 <Box sx={{backgroundImage: "linear-gradient(120deg, #2a2e3f, #0c121a)", color: "rgb(212, 175, 55)"}}>
                     <CardContent>
-                        <AbstractCardTitle>{bottle.name}</AbstractCardTitle>
-                        <AbstractCardType country={bottle.country}>{bottle.type}</AbstractCardType>
-                        <AbstractCardAmount amount={bottle.amount} />
-                        <AbstractCardRating rating={bottle.rating} type={bottle.type as BottleType} />
+                        <Box sx={{height: "96px"}}>
+                            <AbstractCardTitleDynamic width={"188px"} height={"96px"}>{bottle.name}</AbstractCardTitleDynamic>
+                        </Box>
+                        <Box sx={{height: "88px"}}>
+                            <AbstractCardType country={bottle.country}>{bottle.type}</AbstractCardType>
+                            <AbstractCardAmount amount={bottle.amount} />
+                            <AbstractCardRating rating={bottle.rating} type={bottle.type as BottleType} />
+                        </Box>
                     </CardContent>
                 </Box>
             </CardActionArea>
