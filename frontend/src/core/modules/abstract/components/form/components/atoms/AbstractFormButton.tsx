@@ -14,10 +14,12 @@ const AbstractFormButton = ({formik, fullwidth, children, disabled} : AbstractFo
         throw new Error("formik has to be defined");
     }
 
+    const disabledButton = !formik.isValid || formik.isSubmitting || !formik.dirty || disabled;
+
     return (
         <Button
             onClick={() => formik.handleSubmit()}
-            style={{color:"rgb(121, 99, 26)", backgroundColor: "rgb(114, 88, 11)", marginTop: "10px"}}
+            style={{color: disabledButton ? "rgb(121, 99, 26)" : "rgb(227, 187, 56)", backgroundColor: "rgb(114, 88, 11)", marginTop: "10px"}}
             sx={{
                 backgroundColor: '#3e8e41',
                 '&:hover': {
@@ -26,7 +28,7 @@ const AbstractFormButton = ({formik, fullwidth, children, disabled} : AbstractFo
               }}
             variant='contained'
             fullWidth={fullwidth}
-            disabled={!formik.isValid || formik.isSubmitting || !formik.dirty || disabled}
+            disabled={disabledButton}
         >
             {
                 children ?? "Save"

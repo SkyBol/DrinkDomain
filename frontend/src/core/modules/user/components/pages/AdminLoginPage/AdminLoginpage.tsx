@@ -8,10 +8,11 @@ import ActiveUserContext from '../../../contexts/ActiveUserContext';
 import LoginForm from '../../molecules/LoginForm/LoginForm';
 
 const validationSchema = Yup.object().shape({
+  email: Yup.string().required(),
   password: Yup.string().required(),
 });
 
-const Login = () => {
+const AdminLogin = () => {
     const paperStyle = {
         padding: 20,
         height: '50vh',
@@ -29,7 +30,7 @@ const Login = () => {
         password: '',
       },
       onSubmit: (values: { email: string, password: string }) => {
-        login("user@example.com", values.password)
+        login(values.email.toLowerCase(), values.password)
           .then(() => {
               navigate('/');
           })
@@ -53,7 +54,7 @@ const Login = () => {
             <h2>Sign In</h2>
           </Grid>
 
-          <LoginForm formik={formik} />
+          <LoginForm formik={formik} email={true} />
           <div style={{marginTop: "40px", backgroundColor: "#0c0d11", padding: "20px", borderRadius: "10px", width: "100%"}}>
             Bitte verwende das von Jan bereitgestellte Passwort, um dich einzuloggen. Da keine deiner Daten gespeichert werden, möchten wir dich bitten, freundlich und respektvoll zu agieren. Vielen Dank für dein Verständnis!
           </div>
@@ -62,4 +63,4 @@ const Login = () => {
     );
   };
 
-export default Login;
+export default AdminLogin;

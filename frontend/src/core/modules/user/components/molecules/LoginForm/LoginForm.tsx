@@ -5,18 +5,21 @@ import AbstractForm from "../../../../abstract/components/form/components/molecu
 
 interface LoginFormProps {
     formik: FormikProps<any>;
+    email?: boolean;
 }
 
-const LoginForm = ({ formik } : LoginFormProps) => {
+const LoginForm = ({ formik, email } : LoginFormProps) => {
     return (
         <AbstractForm formik={formik}>
-            {/* <AbstractFormTextField
-                id='email'
-                placeholder='Enter username'
-                fullWidth
-                required
-                autoFocus
-            /> */}
+            {
+                email && <AbstractFormTextField
+                    id='email'
+                    placeholder='Enter username'
+                    fullWidth
+                    required
+                    autoFocus
+                />
+            }
             <AbstractFormTextField
                 id='password'
                 placeholder='Enter password'

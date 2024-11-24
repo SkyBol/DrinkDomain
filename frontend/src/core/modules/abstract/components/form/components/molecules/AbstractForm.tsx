@@ -16,6 +16,7 @@ const AbstractForm = ({children, formik} : AbstractFormParams) => {
         if (Array.isArray(children)) {
             return (children as React.ReactElement[])
                 .filter((child) => child !== null)
+                .filter((child) => child !== undefined)
                 .map((child) => {
                     return React.cloneElement(child, {
                         formik: formik,
