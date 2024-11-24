@@ -1,8 +1,9 @@
 import { AppBar, Box, useMediaQuery, useTheme } from '@mui/material';
 import DesktopNavbar from './DesktopNavbar'; 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MobileNavbar from './MobileNavbar';
+import ActiveUserContext from '../user/contexts/ActiveUserContext';
 
 export interface NavbarItem {
     name: string;
@@ -11,48 +12,49 @@ export interface NavbarItem {
     icon: string;
 }
 
-const NavbarItems: NavbarItem[] = [
-    {
-        name: "home",
-        display: "Home",
-        path: "/",
-        icon: "home",
-    },
-    {
-        name: "bar",
-        display: "Bar",
-        path: "/bottles",
-        icon: "search",
-    },
-    {
-        name: "guestBook",
-        display: "Guestbook",
-        path: "/guestBook",
-        icon: "bell",
-    },
-    {
-        name: "cocktail",
-        display: "Cocktail",
-        path: "/cocktail",
-        icon: "bell",
-    },
-    {
-        name: "addBottle",
-        display: "Add Bottle",
-        path: "/bottles/add",
-        icon: "star",
-    },
-    {
-        name: "logout",
-        display: "Logout",
-        path: "/login",
-        icon: "bell",
-    },
-]
-
 export default function SearchAppBar() {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState<string>('');
+    const {user} = useContext(ActiveUserContext);
+
+    const NavbarItems: NavbarItem[] = [
+        {
+            name: "home",
+            display: "Home",
+            path: "/",
+            icon: "home",
+        },
+        {
+            name: "bar",
+            display: "Bar",
+            path: "/bottles",
+            icon: "search",
+        },
+        {
+            name: "guestBook",
+            display: "Guestbook",
+            path: "/guestBook",
+            icon: "bell",
+        },
+        {
+            name: "cocktail",
+            display: "Cocktail",
+            path: "/cocktail",
+            icon: "bell",
+        },
+        {
+            name: "addBottle",
+            display: "Add Bottle",
+            path: "/bottles/add",
+            icon: "star",
+        },
+        {
+            name: user ? "logout" : "login",
+            display: user ? "Logout" : "Login",
+            path: user ? "/logout" : "/login",
+            icon: "bell",
+        },
+    ]
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Detect if the screen is mobile

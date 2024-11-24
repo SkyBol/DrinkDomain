@@ -113,15 +113,19 @@ export const ActiveUserContextProvider = ({
    * and redirecting to the LoginPage.
    */
   const logout = () => {
-    // If no token is saved inside the local storage clear the localStorage directly
-    if (localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY) === null) {
-      resetAuthorization();
-      return;
-    }
-    // If a token is present send a logout-request and clear the localStorage afterwards
-    api.get("/logout").finally(resetAuthorization);
+    // // If no token is saved inside the local storage clear the localStorage directly
+    // if (localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY) === null) {
+    //   resetAuthorization();
+    //   return;
+    // }
+    // // If a token is present send a logout-request and clear the localStorage afterwards
+    // api.get("/logout").finally(resetAuthorization);
+
+    // Clear Local Storage
+    resetAuthorization()
+
     //navigate to login page
-    navigate("/login");
+    //navigate("/login");
   };
 
   /**

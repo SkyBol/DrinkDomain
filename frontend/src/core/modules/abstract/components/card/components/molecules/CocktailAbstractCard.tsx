@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@mui/material";
 import styles from "./AbstractCard.module.css"; 
 import {  useNavigate } from "react-router-dom";
-import ImageService from "../../../../../../../domain/modules/bootle/services/ImageService";
-import AbstractCardTag from "../atoms/AbstractCardTag";
 import Cocktail from "../../../../../../../domain/modules/cocktail/models/Cocktail.model";
+import ActiveUserContext from "../../../../../user/contexts/ActiveUserContext";
 
 interface CocktailAbstractCardProps {
     handleEdit: (id: string) => void;
@@ -15,6 +14,7 @@ interface CocktailAbstractCardProps {
 
 const CocktailAbstractCard: React.FC<CocktailAbstractCardProps> = ({ handleEdit, handleDelete, id, cocktail }) => {
     const navigate = useNavigate();
+    const {user} = useContext(ActiveUserContext);
 
     return (
         <div className={styles.wrapper}>
@@ -58,24 +58,26 @@ const CocktailAbstractCard: React.FC<CocktailAbstractCardProps> = ({ handleEdit,
                 <p>
                     {cocktail.instructions}
                 </p>
-                <div className={styles.cardActions}>
-                    <Button
-                        size="small"
-                        color="primary"
-                        variant="contained"
-                        onClick={() => handleEdit(id)}
-                    >
-                        Edit
-                    </Button>
-                    <Button
-                        size="small"
-                        color="error"
-                        variant="contained"
-                        onClick={() => handleDelete(id)}
-                    >
-                        Delete
-                    </Button>
-                </div>
+                {
+                    user && <div className={styles.cardActions}>
+                        <Button
+                            size="small"
+                            color="primary"
+                            variant="contained"
+                            onClick={() => handleEdit(id)}
+                        >
+                            Edit
+                        </Button>
+                        <Button
+                            size="small"
+                            color="error"
+                            variant="contained"
+                            onClick={() => handleDelete(id)}
+                        >
+                            Delete
+                        </Button>
+                    </div>
+                }
             </div>
         </div>
      

@@ -1,7 +1,5 @@
 import {Route, Routes} from 'react-router-dom';
 import Login from '../../../user/components/pages/LoginPage/LoginPage';
-import UserPage from '../../../user/components/pages/UserPage/UserPage';
-import UserTable from '../../../user/components/pages/UserTable/UserTable';
 import Homepage from '../../../homepage/components/pages/Homepage/Homepage';
 import BottlePage from "../../../../../domain/modules/bootle/components/pages/BottlePage/BottlePage.tsx";
 import AbstractFormGenerated from '../../../abstract/components/form/components/molecules/AbstractFormGenerated';
@@ -14,6 +12,7 @@ import CocktailTable from '../../../../../domain/modules/cocktail/components/pag
 import CocktailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailPage.tsx';
 import CocktailDetailPage from '../../../../../domain/modules/cocktail/components/pages/CocktailPage/CocktailDetailPage.tsx';
 import AutoLoginPage from '../../../user/components/pages/AutoLoginPage/AutoLoginPage.tsx';
+import LogoutPage from '../../../user/components/pages/LogoutPage/LogoutPage.tsx';
 
 const Router = () => {
     return (
@@ -25,6 +24,7 @@ const Router = () => {
                 <Route path={'*'} element={<UserTable />} />
             </Route> */}
 
+            <Route path={'/logout'} element={<LogoutPage/>} />
             <Route path={'/login'} element={<Login/>} />
             <Route path={'/login/:code'} element={<AutoLoginPage />} />
 

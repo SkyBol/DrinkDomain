@@ -35,7 +35,7 @@ export const CocktailCard = ({cocktail}: CocktailCardProps) => {
                     height="240"
                     width="140"
                     image={getImageUrl()}
-                    alt="default bottle"
+                    alt="An Image hasn't been uploaded yet. You can help!"
                 />
             </Box>
             <Box sx={{backgroundImage: "linear-gradient(120deg, #2a2e3f, #0c121a)", color: "rgb(212, 175, 55)", height: "100%"}}>

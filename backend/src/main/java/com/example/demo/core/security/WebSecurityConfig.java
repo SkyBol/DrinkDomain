@@ -44,6 +44,7 @@ public class WebSecurityConfig {
     return http.authorizeHttpRequests(requests -> requests
                 .requestMatchers(HttpMethod.POST, "/user/login").permitAll() // "/user/register"
                 .requestMatchers(HttpMethod.GET, "/storage/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/call/**").permitAll() // Temp. Allow all for foreign visitors
                 .requestMatchers(HttpMethod.GET, "/v3/api-docs","/v3/api-docs/swagger-config","/swagger-ui/*","/myapi/*/*","/myapi/*").authenticated()
                 .requestMatchers("/call/**").authenticated()
                 .anyRequest().authenticated())
