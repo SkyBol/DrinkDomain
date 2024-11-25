@@ -65,13 +65,14 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
             </div>
 
             <div className={styles.productSpecifications}>
-            <AbstractCardTag tags={bottle.tags}/>
+                <AbstractCardTag tags={bottle.tags}/>
+
                 <h1>Beschreibung</h1>
                 <p>
                     {bottle.description}
                 </p>
 
-                <div className={styles.productFeatures}>
+                {/* <div className={styles.productFeatures}>
                     <div className={styles.feature}>
                         <div className={styles.featureIcon}></div>
                         <div className={styles.featureText}>
@@ -100,7 +101,8 @@ const NewAbstractCard: React.FC<AbstractCardProps> = ({ handleEdit, handleDelete
                             <p>Test</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
                 {
                     user && <div className={styles.cardActions}>
                         <Button

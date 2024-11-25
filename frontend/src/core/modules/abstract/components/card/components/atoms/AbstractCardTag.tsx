@@ -5,13 +5,6 @@ interface AbstractCardTagProps {
 }
 
 const AbstractCardTag: React.FC<AbstractCardTagProps> = ({ tags }) => {
-    const containerStyle = {
-        display: "flex", // Align tags in a row
-        flexDirection: "row" as "row", 
-        gap: "10px", // Space between the tags
-        marginBottom: "15px", // Space between the tags and the description
-    };
-
     const tagStyle = {
         backgroundColor: "#D4AF37", // Gold background for the tags
         color: "black",
@@ -23,7 +16,13 @@ const AbstractCardTag: React.FC<AbstractCardTagProps> = ({ tags }) => {
     };
 
     return (
-        <div style={containerStyle}>
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "10px",
+            flexWrap: "wrap",
+            marginBottom: "15px",
+        }}>
             {tags?.map((tag, index) => (
                 <div key={index} style={tagStyle}>
                     {tag}

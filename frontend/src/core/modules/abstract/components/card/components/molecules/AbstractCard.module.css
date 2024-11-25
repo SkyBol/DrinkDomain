@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 *, button, input{
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
-position: relative;
-  
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  position: relative;
+
   font-family: 'Roboto', sans-serif;
 }
 
 :root{
-  --bg-shape-color:linear-gradient(120deg,  #343A4F, #0F1620) ;
- --lightblue: #D4AF37;
- --darkblue: #D4AF37;
- --text-color: #D4AF37;
+  --bg-shape-color:linear-gradient(120deg,  #343A4F, #0F1620);
+  --lightblue: #D4AF37;
+  --darkblue: #D4AF37;
+  --text-color: #D4AF37;
 }
 
 html,body{
@@ -21,35 +21,40 @@ html,body{
   background-image: linear-gradient(90deg, #414850, #131720);
   color: var(--text-color);
 }
+
 body{
   display:flex;
   justify-content: center;
   align-items: center;
   padding: 40px 0px;
 }
-.wrapper{
+
+.wrapper {
   z-index: 2;
-  width:350px;
+  width: 350px;
   border-radius: 40px;
   background-image: var(--bg-shape-color);
   overflow: hidden;
-  position: relative;  
+  position: relative;
   z-index: 2; 
 }
+
 .overviewInfo, .productSpecifications {
   padding: 24px;
 }
+
 .overviewInfo{
   background-image:  linear-gradient(176deg, #eec64f, #D4AF37);
 }
+
 .actions{
   display: flex;
   justify-content: space-between;
   margin-bottom: 32px;
-  
-  
-  .backbutton{
-    
+
+
+  .backbutton {
+    color: #A48728;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -71,27 +76,31 @@ body{
   justify-content: center;
   height: 100%;
 
-  img{}
+  img {
+    width: 200px;
+  }
 }
  
 
 h1{
   font-family: 'Michroma', sans-serif;
 }
+
 .grouptext{
-h3 {
-    letter-spacing: 3.2px;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: black;
-}
+  h3 {
+      letter-spacing: 2.2px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: black;
+  }
+
   p {
     font-size: 12px;
     opacity: 0.8;
     color: black;
-  } 
-  
+  }
+  margin-bottom: 12px;
 }
 
 
